@@ -1,4 +1,4 @@
-# Smile Warmup Project - CptS322 - Fall2017
+# Smile Warmup Project - CptS322 - Fall2018
 
 Before we jump into the main team projects, we will practice with web
 development by building a Smile app.
