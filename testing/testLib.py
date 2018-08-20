@@ -4,7 +4,7 @@ A library for functional testing of the backend API
 
 import unittest
 import traceback
-import httplib
+import http.client
 import sys
 import os
 import json
@@ -16,13 +16,10 @@ class RestTestCase(unittest.TestCase):
     """
 
     # Lookup the name of the server to test
-    serverToTest = "localhost:3000"
-    if "TEST_SERVER" in os.environ:
-        serverToTest = os.environ["TEST_SERVER"]
-        # Drop the http:// prefix
-        splits = serverToTest.split("://")
-        if len(splits) == 2:
-            serverToTest = splits[1]
+    serverToTest = "localhost:5000"
+    smileSpace = 'sakirenin'
+    VERBOSE = 0
+
 
     def makeRequest(self, url, method="GET", data={ }):
         """
@@ -33,7 +30,7 @@ class RestTestCase(unittest.TestCase):
         @result is a dictionary of key-value pairs
         """
 
-        printHeaders = (os.getenv("VERBOSE") == '1')
+        printHeaders = (self.VERBOSE == 1)
         headers = { }
         body = ""
         if data is not None:
@@ -42,9 +39,9 @@ class RestTestCase(unittest.TestCase):
 
         try:
             self.conn.request(method, url, body, headers)
-        except Exception, e:
+        except Exception as e:
             if str(e).find("Connection refused") >= 0:
-                print "Cannot connect to the server "+RestTestCase.serverToTest+". You should start the server first, or pass the proper TEST_SERVER environment variable"
+                print ("Cannot connect to the server ",RestTestCase.serverToTest,". You should start the server first, or pass the proper TEST_SERVER environment variable")
                 sys.exit(1)
             raise
 
@@ -53,19 +50,19 @@ class RestTestCase(unittest.TestCase):
         data_string = "<unknown"
         try:
             if printHeaders:
-                print "\n****"
-                print "  Request: "+method+" url="+url+" data="+str(data)
-                print "  Request headers: "+str(headers)
-                print ""
-                print "  Response status: "+str(resp.status)
-                print "  Response headers: "
+                print("\n****")
+                print("  Request: ",method," url=",url," data=",str(data))
+                print("  Request headers: ",str(headers))
+                print("")
+                print("  Response status: ",str(resp.status))
+                print("  Response headers: ")
                 for h, hv in resp.getheaders():
-                    print "    "+h+"  =  "+hv
+                    print("    ",h,"  =  ",hv)
 
-            self.assertEquals(200, resp.status)
-            data_string = resp.read()
+            self.assertEqual(200, resp.status)
+            data_string = resp.read().decode()
             if printHeaders:
-                print "  Response data: "+data_string
+                print("  Response data: ",data_string)
             # The response must be a JSON request
             # Note: Python (at least) nicely tacks UTF8 information on this,
             #   we need to tease apart the two pieces.
@@ -78,20 +75,19 @@ class RestTestCase(unittest.TestCase):
 
         except:
             # In case of errors dump the whole response,to simplify debugging
-            print "Got exception when processing response to url="+url+" method="+method+" data="+str(data)
-            print "  Response status = "+str(resp.status)
-            print "  Response headers: "
+            print("Got exception when processing response to url="+url+" method="+method+" data="+str(data))
+            print("  Response status = "+str(resp.status))
+            print("  Response headers: ")
             for h, hv in resp.getheaders():
-                print "    "+h+"  =  "+hv
-            print "  Data string: "+data_string
-            print "  Exception: "+traceback.format_exc ()
+                print("    "+h+"  =  "+hv)
+            print("  Data string: ",data_string)
+            print("  Exception: ",traceback.format_exc ())
             if not printHeaders:
-                print "  If you want to see the request headers, use VERBOSE=1"
-            raise
+                print("  If you want to see the request headers, use VERBOSE=1")
 
 
     def setUp(self):
-        self.conn = httplib.HTTPConnection(RestTestCase.serverToTest, timeout=1)
+        self.conn = http.client.HTTPConnection(RestTestCase.serverToTest, timeout=1)
 
     def tearDown(self):
         self.conn.close ()
@@ -107,9 +103,6 @@ class SmileTestCase(RestTestCase):
     def setUp(self):
         # Run first the setUp from the superclass
         RestTestCase.setUp(self)
-        # As part of the setup, we grab the SMILE_SPACE from the environment
-        assert 'SMILE_SPACE' in os.environ, "While running these tests you must specify SMILE_TEST=..."
-        self.smileSpace = os.environ["SMILE_SPACE"]
         # We empty the smile space, before we start the test
         self.emptySmileSpace()
 
@@ -126,8 +119,19 @@ class SmileTestCase(RestTestCase):
             url += '&order_by='+order_by
 
         print(url)
-        
+
         respData = self.makeRequest(url, method='GET')
+        return respData
+
+    def likeSmiles(self,id):  #id is not optional
+        """
+        Helper function to like smile
+        """
+        url = '/api/smiles/' + str(id) + '/like'
+
+        print(url)
+
+        respData = self.makeRequest(url, method='POST')
         return respData
 
     def emptySmileSpace(self):
@@ -143,4 +147,6 @@ class SmileTestCase(RestTestCase):
         """
         Check that the response is not an error response
         """
-        self.assertEquals(1, respData['status'], msg)
+        self.assertTrue(respData != None, 'Response is None')
+        self.assertEqual(1, respData['status'], msg)
+

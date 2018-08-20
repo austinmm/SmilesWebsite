@@ -23,13 +23,37 @@ class TestSmiles(testLib.SmileTestCase):
                                              'like_count' : 0
                                              })
         self.assertSuccessResponse(respCreate)
-        self.assertEquals(0, respCreate['smile']['like_count'])
-        self.assertEquals('A shy smile', respCreate['smile']['title'])
+        self.assertEqual(0, respCreate['smile']['like_count'])
+        self.assertEqual('A shy smile', respCreate['smile']['title'])
 
         # Now read the smiles
-        respGet = self.getSmiles(count='all')
+        respGet = self.getSmiles(count=10)
         self.assertSuccessResponse(respGet)
-        self.assertEquals(1, len(respGet['smiles']))
-        self.assertEquals(respCreate['smile']['id'], respGet['smiles'][0]['id'])
+        self.assertEqual(1, len(respGet['smiles']))
+        self.assertEqual(respCreate['smile']['id'], respGet['smiles'][0]['id'])
+
+    def testLike(self):
+        """
+        Test adding one smile
+        """
+        respCreate = self.makeRequest("/api/smiles", method="POST",
+                                    data = { 'title' : 'A shy smile',
+                                             'space' : self.smileSpace,
+                                             'story' : 'Once upon a time I was a shy boy...',
+                                             'happiness_level' : 1,
+                                             'like_count' : 0
+                                             })
+        self.assertSuccessResponse(respCreate)
+        self.assertEqual(0, respCreate['smile']['like_count'])
+        self.assertEqual('A shy smile', respCreate['smile']['title'])
+
+        # Now like the smile
+        smile_id = respCreate['smile']['id'] #use the id for the story we just created
+        respLike = self.likeSmiles(id=smile_id)
+        self.assertSuccessResponse(respLike)
+        self.assertEqual(respCreate['smile']['id'], respLike['smile']['id'])
+        self.assertEqual((respCreate['smile']['like_count']+1), respLike['smile']['like_count'])
 
 
+if __name__ == '__main__':
+    unittest.main()
