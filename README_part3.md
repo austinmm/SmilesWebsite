@@ -58,11 +58,12 @@ Task 2: Setup Flask on your `localhost`
     Note for Windows users: If `pip` is not installed in your system, you need to also add the Python\Scripts path to the Windows Path. On Windows, Python will typically be installed under the directory `C:\Users\<username>\AppData\Local\Programs\Python\Python3.x`. Locate your Python installation directory, make sure `pip` is under the `Scripts` directory, and add the "path of Scripts directory" to the Windows Path. 
          
 3. On GitBash/terminal go to the warmup project directory. Run the following commands to create the application directory. Replace `<appname>` with the name of your application (e.g. SmileAPI)
+    
     ```
     mkdir <appname>  
     cd <appname>
     ```
- 4. Under your `<appname>` directory create a script file called `requirements.txt` and which inludes the following commands.  `requirements.txt` specifies the  Python package dependencies needed for your application.
+4. Under your `<appname>` directory create a script file called `requirements.txt` and which inludes the following commands.  `requirements.txt` specifies the  Python package dependencies needed for your application.
     ```
     flask
     flask-sqlalchemy
