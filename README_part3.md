@@ -347,6 +347,8 @@ because you will need to deploy your code to Heroku as well as git.
 
     Push the `part3` branch to GitHub:
     ```
+    git add .
+    git commit -m "Your own commit message"
     git push origin part3
     ```
     * You can submit multiple times, after intermediate tasks, but on the deadline
@@ -362,7 +364,7 @@ command to push changes to Heroku:
     ```
    You can deploy multiple times to Heroku, after intermediate tasks, but on the deadline you need to have submitted the end result.
 
-4.	Create a Wiki page on Github and write your Heroku URL. See the [warmup_project_322 repo](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/wiki/Heroku-URL) for an example.      
+4.	Create a Wiki page on Github and write your Heroku URL. See the [warmup_project_322_skeleton repo](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/wikis/Heroku-URL) for an example.      
 
     You are Done!
 ---
