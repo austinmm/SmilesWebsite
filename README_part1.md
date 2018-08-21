@@ -58,7 +58,7 @@ git checkout part3
 git checkout master
 ```
 
-3. You now have a local copy of the `warmup_project_322_skeleton` repository. Now, you need to copy the skeleton code to you own **private** repository that we created and commit everything to this repository.
+3. You now have a local copy of the `warmup_project_322_skeleton` repository.
 
 ```
 git remote -v
@@ -69,7 +69,7 @@ git remote -v
 origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git (fetch)
 origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git (push)
 ```
-Change the commit origin with the following command to your new repository.
+ ow, you need to copy the skeleton code to you own **private** repository that we created and commit everything to this repository. Change the commit origin with the following command to your new repository (i.e., yourlastname-warmup).
 ```
 git remote remove origin
 ```
@@ -85,7 +85,7 @@ git push --set-upstream origin master
 git push --all
 ```
 
-Now if you go to your EECS Github repo, you will see all of the relevant files.
+Now if you go to your EECS GitLab repo, you will see all of the relevant files.
 
 6. Switch to branch named `part1`
 ```
@@ -114,7 +114,7 @@ Now if you go to your EECS Github repo, you will see all of the relevant files.
     
    At this point if you open `index.html` it should look like this:
    
-![Part 1 Task 1](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/tree/part1/README.d/index-0.png)
+![Part 1 Task 1] <img src="README.d/index-0.png" width="600">
 
 ---
 ### Task 2: The Home Page
