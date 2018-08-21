@@ -123,7 +123,7 @@ modify to implement the project.
     
     At this point if you open `index.html` it should look like this:
    
-    <img src="README.d/index-0.png" width="600" border="1">
+    <img src="README.d/index-0.png" width="600" border="2">
 
 ---
 ### Task 2: The Home Page
@@ -165,7 +165,7 @@ Add elements for all of the following. Don't worry about positioning or styling 
      Use a `<div>` element with the HTML class "`count`", and contents a number.
   - Timestamp for when this was posted.
       Use a `<div>` with HTML class "`timestamp`", and contents of the form "Posted at 1:03pm May 22, 2015".
-4. Create 2 more smile posts, with stories about something that happened that
+1. Create 2 more smile posts, with stories about something that happened that
     made you smile, or something someone did for you that you're grateful for.
    The posts should have the same HTML structure as the first post.
     We'll use all 3 posts while customizing layout.
@@ -176,7 +176,8 @@ Add elements for all of the following. Don't worry about positioning or styling 
 
 At this point if you open `index.html` it should look like this:
 
-![Part 1 Task 2.1](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/tree/part1/README.d/index-1-2.1.png)
+    <img src="README.d/index-1-2.1.png" width="600" border="2">
+    [Part 1 Task 2.1]
 
 
 #### Task 2.2: Getting the Layout Right
