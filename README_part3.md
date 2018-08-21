@@ -123,7 +123,8 @@ You will have to implement the following API entry points:
 
 1. GET /api/smiles
     - Read smiles. See specification in
-      [Part2 - Task2](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/blob/part2/README_part2.md#Display-All-Smiles)
+      [Part2 - Task2](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/part2/README_part2.md#Display-All-Smiles)
+      
       *Example Request*
       `GET /api/smiles?space=initial&count=5&order_by=created_at`
       
@@ -145,7 +146,7 @@ You will have to implement the following API entry points:
       
 3. POST /api/smiles
    - Create a new smile.
-      See specification in [Part 2- Task4](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/blob/part2/README_part2.md)
+      See specification in [Part 2- Task4](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/part2/README_part2.md)
       *Example Request*
       `POST /api/smiles`
       
@@ -185,7 +186,7 @@ If there were errors, then the response contains only two fields:
          
 5. POST /api/smiles/:id/like
    - Increment the like_count for a smile.
-      See specification in [Part2 - Task3](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/blob/part2/README_part2.md)
+      See specification in [Part2 - Task3](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/part2/README_part2.md)
       *Example Request*
       `POST /api/smiles/4/like`
 
