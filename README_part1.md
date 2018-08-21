@@ -44,77 +44,76 @@ modify to implement the project.
  
 
 1. Clone the repository [warmup_project_322_skeleton repository](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton) on the working machine
-```
-git clone https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git
-```
-  You'll be prompted to enter your username and password, the pair you used to login gitlab.eecs.wsu.edu. If succeed, you'll see a new directory show up.
+    ```
+    git clone https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git
+    ```
+    You'll be prompted to enter your username and password, the pair you used to login gitlab.eecs.wsu.edu. If succeed, you'll see a new directory show up.
   
 2. Next, you need to go to the repo directory and checkout all of the branches that have already been created for you.
-```
-cd warmup_project_322_skeleton/
-git checkout part1
-git checkout part2
-git checkout part3
-git checkout master
-```
+    ```
+    cd warmup_project_322_skeleton/
+    git checkout part1
+    git checkout part2
+    git checkout part3
+    git checkout master
+    ```
 
 3. You now have a local copy of the `warmup_project_322_skeleton` repository.
 
-```
-git remote -v
-```
-This will display all remote repositories. Currently, it should show the following:
-```
-git remote -v
-origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git (fetch)
-origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git (push)
-```
-Now, you need to copy the skeleton code to you own **private** repository that we created and commit everything to this repository. Change the commit origin with the following command to your new repository (i.e., yourlastname-warmup).
+    ```
+    git remote -v
+    ```
+    This will display all remote repositories. Currently, it should show the following:
+    ```
+    git remote -v
+    origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git (fetch)
+    origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git (push)
+    ```
+    Now, you need to copy the skeleton code to you own **private** repository that we created and commit everything to this    repository. Change the commit origin with the following command to your new repository (i.e., yourlastname-warmup).
 
-```
-git remote remove origin
-```
+    ```
+    git remote remove origin
+    ```
 
 4. Next you need to add your repository as the new origin.
 
-```
-git remote add origin https://gitlab.eecs.wsu.edu/322-fall18-arslanay/yourlastname-warmup.git
-```
-You can `git remote -v` to test to make sure origin is changed.
+    ```
+    git remote add origin https://gitlab.eecs.wsu.edu/322-fall18-arslanay/yourlastname-warmup.git
+    ```
+    You can `git remote -v` to test to make sure origin is changed.
 
 
 5. Push the code to your new branch.
-```
-git push --set-upstream origin master
-git push --all
-```
-   Now if you go to your EECS GitLab repo, you will see all of the relevant files.
+    ```
+    git push --set-upstream origin master
+    git push --all
+    ```
+    Now if you go to your EECS GitLab repo, you will see all of the relevant files.
 
-   To keep your local reponame consistent, rename your local repo directory. 
-```
-cd ..
-mv warmup_project_322_skeleton/ yourlastname-warmup
-```
-
+    To keep your local reponame consistent, rename your local repo directory. 
+    ```
+    cd ..
+    mv warmup_project_322_skeleton/ yourlastname-warmup
+    ```
 
 6. Switch to branch named `part1`
-```
-   git checkout part1
-```
-   - You will now be editing locally, and **remember to commit frequently**.
+    ```
+    git checkout part1
+    ```
+    * You will now be editing locally, and **remember to commit frequently**.
 
-   - You will find the following provided files:
-    - static/images
+    * You will find the following provided files:
+        - static/images
         - `favicon.png` icon that shows on the browser tab
         - `happiness-level.png` sprite for three levels of happiness
         - `heart.png` icon for like button
         - `smile.png` app logo
-    - static/styles
+    * static/styles
         - `main.css` where all the styling goes
-    - static/html    
+    * static/html    
         - `create.html` create page
         - `index.html` home page
-    - static/scripts (not needed for Part 1; will need for Part 2)
+    * static/scripts (not needed for Part 1; will need for Part 2)
         
    You will have to make changes to the .css and the .html files.
 
