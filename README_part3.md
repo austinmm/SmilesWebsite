@@ -21,10 +21,12 @@ for Part 1 and Part 2, so that you can submit your code to the same git
 repository.
 
 1. Checkout to part3 branch (part3 branch already exists)
+
 ```
 git checkout part3
 ```
 2. Merge your changes from part3 branch to part3. (Your current branch is part3)
+
 ```
 git merge part2
 ```
