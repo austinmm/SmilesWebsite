@@ -84,8 +84,13 @@ You can `git remote -v` to test to make sure origin is changed.
 git push --set-upstream origin master
 git push --all
 ```
-
 Now if you go to your EECS GitLab repo, you will see all of the relevant files.
+
+To keep your local reponame consistent, rename your local repodirectory. 
+```
+cd ..
+mv warmup_project_322_skeleton/ arslanay-warmup
+```
 
 6. Switch to branch named `part1`
 ```
@@ -114,7 +119,7 @@ Now if you go to your EECS GitLab repo, you will see all of the relevant files.
     
    At this point if you open `index.html` it should look like this:
    
-![Part 1 Task 1] <img src="README.d/index-0.png" width="600">
+<img src="README.d/index-0.png" width="600" border="1px">
 
 ---
 ### Task 2: The Home Page
