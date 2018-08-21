@@ -167,14 +167,14 @@ Add elements for all of the following. Don't worry about positioning or styling 
       Use a `<div>` with HTML class "`timestamp`", and contents of the form "Posted at 1:03pm May 22, 2015".
 1. Create 2 more smile posts, with stories about something that happened that
     made you smile, or something someone did for you that you're grateful for.
-   The posts should have the same HTML structure as the first post.
+    The posts should have the same HTML structure as the first post.
     We'll use all 3 posts while customizing layout.
       - Change the "`happiness-level-1`" HTML class for the second and third post
     to  "`happiness-level-2`" and  "`happiness-level-3`", respectively. This
     will allow you to test the display of the three different happiness
     levels.
 
-At this point if you open `index.html` it should look like this:
+    At this point if you open `index.html` it should look like this:
 
     <img src="README.d/index-1-2.1.png" width="600" border="2">
     [Part 1 Task 2.1]
