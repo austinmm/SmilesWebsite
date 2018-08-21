@@ -194,7 +194,7 @@ You will have to implement the following API entry points:
     Create the route for `post_like`. Given an ID, it increments the `like-count' by 1 and loads the smile. ( *Note: please remember that after updating the `like_count`, you should send back the updated smile story.* )
 
 ##### Testing your API using Postman
-    You can use the [Postman tool](https://www.getpostman.com/postman) to test whether you set up the routes correctly. The responses your API returns should be similar to the responses you get from our backend `https://smile451.herokuapp.com` for the same requests.
+You can use the [Postman tool](https://www.getpostman.com/postman) to test whether you set up the routes correctly. The responses your API returns should be similar to the responses you get from our backend `https://smile451.herokuapp.com` for the same requests.
 
 ---
 Task 4: Prepare the Automated Tests  (**SKIP THIS TASK**)
