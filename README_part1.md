@@ -52,7 +52,6 @@ git clone https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_ske
 2. Next, you need to go to the repo directory and checkout all of the branches that have already been created for you.
 ```
 cd warmup_project_322_skeleton/
-
 git checkout part1
 git checkout part2
 git checkout part3
