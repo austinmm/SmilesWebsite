@@ -49,8 +49,10 @@ git clone https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_ske
 ```
   You'll be prompted to enter your username and password, the pair you used to login gitlab.eecs.wsu.edu. If succeed, you'll see a new directory show up.
   
-2. Next, you need to checkout all of the branches that have already been created for you.
+2. Next, you need to go to the repo directory and checkout all of the branches that have already been created for you.
 ```
+cd warmup_project_322_skeleton/
+
 git checkout part1
 git checkout part2
 git checkout part3
@@ -74,13 +76,13 @@ git remote remove origin
 ```
 4. Next you need to add your repository as the new origin.
 ```
-git remote set-url origin https://gitlab.eecs.wsu.edu/322-fall18-arslanay/yourlastname-warmup.git
+git remote add origin https://gitlab.eecs.wsu.edu/322-fall18-arslanay/yourlastname-warmup.git
 ```
 You can `git remote -v` to test to make sure origin is changed.
 
 5. Push the code to your new branch.
 ```
-git push --set-upstream origin master --force
+git push --set-upstream origin master
 git push --all
 ```
 
