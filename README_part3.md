@@ -182,16 +182,16 @@ You will have to implement the following API entry points:
     }
     ```
     #### **TODO 6**:
-        Create the route for `delete_smiles`. Given a space name, all smiles in that space should be deleted.   
+    Create the route for `delete_smiles`. Given a space name, all smiles in that space should be deleted.   
          
-5. POST /api/smiles/:id/like
+5. POST  /api/smiles/:id/like
     * Increment the like_count for a smile.
       See specification in [Part2 - Task3](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/part2/README_part2.md)
       *Example Request*
       `POST /api/smiles/4/like`
 
-#### **TODO 7**:
-     Create the route for `post_like`. Given an ID, it increments the `like-count' by 1 and loads the smile. ( *Note: please remember that after updating the `like_count`, you should send back the updated smile story.* )
+    #### **TODO 7**:
+    Create the route for `post_like`. Given an ID, it increments the `like-count' by 1 and loads the smile. ( *Note: please remember that after updating the `like_count`, you should send back the updated smile story.* )
 
 ##### Testing your API using Postman
     You can use the [Postman tool](https://www.getpostman.com/postman) to test whether you set up the routes correctly. The responses your API returns should be similar to the responses you get from our backend `https://smile451.herokuapp.com` for the same requests.
