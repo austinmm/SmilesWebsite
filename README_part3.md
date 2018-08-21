@@ -22,21 +22,20 @@ repository.
 
 1. Checkout to part3 branch (part3 branch already exists)
 
-```
-git checkout part3
-```
+    ```
+    git checkout part3
+    ```
 2. Merge your changes from part3 branch to part3. (Your current branch is part3)
 
-```
-git merge part2
-```
-3. You will now be editing locally. If you need to move the files that you
-    had for Part 2, feel free to do so. And **remember to commit frequently**. 
+    ```
+    git merge part2
+    ```
+3. You will now be editing locally. If you need to move the files that you had for Part 2, feel free to do so. And **remember to commit frequently**. 
 
 ---
 Task 2: Setup Flask on your `localhost`
 ---
-1. If you haven't yet, go ahead and install [Python](https://www.python.org/downloads/). (Your Python version should be 3.4.x or higher. Latest version is 3.6.2.)
+1. If you haven't yet, go ahead and install [Python](https://www.python.org/downloads/). (Your Python version should be 3.4.x or higher. Latest version is 3.7.0)
 
       **Important** (Windows users):
       Please make sure to add the Python path to Windows Path. Read more [here](https://superuser.com/questions/143119/how-to-add-python-to-the-windows-path).
@@ -44,74 +43,74 @@ Task 2: Setup Flask on your `localhost`
 
 2. If your system is Windows, open the GitBash; if Mac or Linux, open a terminal. 
    Run the following commands to install flask and flask-sqlalchemy. 
-on `Windows`:
-```
-pip install flask
-pip install flask-sqlalchemy
-```
-on `Mac/Linux`:
-```
-pip3 install flask
-pip3 install flask-sqlalchemy
-```
-Please don't install `flask` on a `virtualenv`.
-   
-   Note for Windows users: If `pip` is not installed in your system, you need to also add the Python\Scripts path to the Windows Path. On Windows, Python will typically be installed under the directory `C:\Users\<username>\AppData\Local\Programs\Python\Python3.x`. Locate your Python installation directory, make sure `pip` is under the `Scripts` directory, and add the "path of Scripts directory" to the Windows Path. 
+    on `Windows`:
+    ```
+    pip install flask
+    pip install flask-sqlalchemy
+    ```
+    on `Mac/Linux`:
+    ```
+    pip3 install flask
+    pip3 install flask-sqlalchemy
+    ```
+    Please don't install `flask` on a `virtualenv`.
+    
+    Note for Windows users: If `pip` is not installed in your system, you need to also add the Python\Scripts path to the Windows Path. On Windows, Python will typically be installed under the directory `C:\Users\<username>\AppData\Local\Programs\Python\Python3.x`. Locate your Python installation directory, make sure `pip` is under the `Scripts` directory, and add the "path of Scripts directory" to the Windows Path. 
          
 3. On GitBash/terminal go to the warmup project directory. Run the following commands to create the application directory. Replace `<appname>` with the name of your application (e.g. SmileAPI)
-```
-mkdir <appname>  
-cd <appname>
-```
+    ```
+    mkdir <appname>  
+    cd <appname>
+    ```
  4. Under your `<appname>` directory create a script file called `requirements.txt` and which inludes the following commands.  `requirements.txt` specifies the  Python package dependencies needed for your application.
- ```
-flask
-flask-sqlalchemy
-flask-cors
-```
-Install the requirements by running the following command:
- 
-```
-pip install -r requirements.txt
-```
+    ```
+    flask
+    flask-sqlalchemy
+    flask-cors
+    ```
+    Install the requirements by running the following command:
+    
+    ```
+    pip install -r requirements.txt
+    ```
 
-Download [app.py](https://gist.github.com/t-walker/c15eb065eae6805de4057379dd35e786) into your app folder which has code to get you started.
+    **Download [app.py](https://gist.github.com/t-walker/c15eb065eae6805de4057379dd35e786) into your app folder which has code to get you started.**
 
 5. Run the following command to run your `app` on your `localhost`. 
-On Windows:
-```
-python app.py 
-```
-On Mac/Linux:
-```
-python3 app.py 
-```
+    On Windows:
+    ```
+    python app.py 
+    ```
+    On Mac/Linux:
+    ```
+    python3 app.py 
+    ```
 ---
 Task 2: Create the Model
 ---
-You will have to create a single model (database table), called Smile, for your application. 
+    You will have to create a single model (database table), called Smile, for your application. 
 
-The skeleton code we provided to you (`app.py`) already includes the code to setup a `sqlite` database via `SQLAlchemy` and create a model (table) called `Smile`.  
+    The skeleton code we provided to you (`app.py`) already includes the code to setup a `sqlite` database via `SQLAlchemy` and create a model (table) called `Smile`.  
 
-The schema for the `Smile` table should look like this (this is a suggestion, although
-other schemas may work just as well):
+    The schema for the `Smile` table should look like this (this is a suggestion, although
+    other schemas may work just as well):
 
-| Field name       | Field type  | Constraints | Comments
----------------|-----|-----|-----
-| id                      | integer        |   not null, primary key  | this should be autogenerated
-| space                | string          |   not null (at most 128 characters) 
-| title                   | string          |  not null (at most 64 characters)
-| story                 | string          |    not null (at most 2048 characters)
-| happiness_level  | integer       | not null
-| like_count          | integer        |   not null | Initialize to 0
-| created_at          | float            | not null | You can use some other representation of time , as long as it does not depend on the local timezone, and it allows for sub-second precision. 
-| updated_at        | float             |  not null | You can use some other representation of time, as long as it does not depend on the local timezone, and it allows for sub-second precision. 
+    | Field name       | Field type  | Constraints | Comments
+    ---------------|-----|-----|-----
+    | id                      | integer        |   not null, primary key  | this should be autogenerated
+    | space                | string          |   not null (at most 128 characters) 
+    | title                   | string          |  not null (at most 64 characters)
+    | story                 | string          |    not null (at most 2048 characters)
+    | happiness_level  | integer       | not null
+    | like_count          | integer        |   not null | Initialize to 0
+    | created_at          | float            | not null | You can use some other representation of time , as long as it does not depend on the local timezone, and it allows for sub-second precision. 
+    | updated_at        | float             |  not null | You can use some other representation of time, as long as it does not depend on the local timezone, and it allows for sub-second precision. 
 
 
-#### **TODO 1**:
-The skeleton code included the code to create `id` attribute for the smile table. You should write the code to add the other attributes listed above. Make sure to enforce the constraints specified for each attribute. 
+    #### **TODO 1**:
+    The skeleton code included the code to create `id` attribute for the smile table. You should write the code to add the other attributes listed above. Make sure to enforce the constraints specified for each attribute. 
 
-   **Important Note:** When you run your server for the first time, if the database doesn't exist it will create it. If you run your code before you add all attributes, it will create the database with missing attributes. After you write the code to add the additional attributes , rm the file `sqlalchemy-demo.db` and re-run your code. This will remove the initial database created, and recreate the database with added attributes.   
+    **Important Note:** When you run your server for the first time, if the database doesn't exist it will create it. If you run your code before you add all attributes, it will create the database with missing attributes. After you write the code to add the additional attributes , rm the file `sqlalchemy-demo.db` and re-run your code. This will remove the initial database created, and recreate the database with added attributes.   
 
 ---
 Task 3: Create the Routes and Views
