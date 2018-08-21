@@ -271,7 +271,7 @@ and `background-image: url('../images/heart.png');`; adjust `height` and
  you wrote in the HTML does not show up.)
 
 1. Replace the `Lvl` text with the happiness level icons in `images/happiness-level.png`.  
-    <img src="https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/master/static/images/happiness-level.png">
+    <img src="static/images/happiness-level.png">
     Or create your own three-icon sprite. 
   
     * You'll notice there are 3 images in one png. This is called a sprite. Developers often combine a bunch of icons onto one file to speed up page load time since every image requires a network request. (E.g. this is the [sprite Google Doc uses](https://ssl.gstatic.com/docs/common/h_sprite11.svg))
