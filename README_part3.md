@@ -123,7 +123,7 @@ You can now proceed to write the code for implementing the API.
 You will have to implement the following API entry points:
 
 1. GET /api/smiles
-    * Read smiles. See specification in
+    Read smiles. See specification in
     [Part2 - Task2](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/part2/README_part2.md#Display-All-Smiles)
         
     *Example Request*
@@ -131,62 +131,61 @@ You will have to implement the following API entry points:
         
     Part of the implementation for creating the route for `index` (i.e., loading all smiles) is provided to you in the skeleton code (`index()` function). Complete tasks TODO #1 and TODO #2 to order the retrieved stories based on the specified attribute value and to limit the number of stories. 
 
-#### **TODO 2**:
+    #### **TODO 2**:
     Set the column which you are ordering on (if it exists)
       
-#### **TODO 3**:
+    #### **TODO 3**:
     Limit the number of posts based on the count (if it exists)
 
 2. POST /api/smiles/:id
     Loads a smile given the id as a value in the URL.
-    *Example Request*
-    `POST /api/smiles/4`
+        *Example Request*
+        `POST /api/smiles/4`
       
-#### **TODO 4**:
+    #### **TODO 4**:
      Create the route for `show` to load a smile with the given id.   
       
 3. POST /api/smiles
-   - Create a new smile.
-      See specification in [Part 2- Task4](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/part2/README_part2.md)
-      *Example Request*
-      `POST /api/smiles`
+    Create a new smile.
+    See specification in [Part 2- Task4](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/part2/README_part2.md)
+        *Example Request*
+        `POST /api/smiles`
       
-#### **TODO 5**:
-     Create the route for `create` to create a smile with the given JSON data.       
-      
+    #### **TODO 5**:
+    Create the route for `create` to create a smile with the given JSON data.        
       
 4. DELETE /api/smiles
-    - Delete all the smiles in a smile space. See specification below.
+    * Delete all the smiles in a smile space. See specification below.
 
-##### Query Parameters
-```
-space: the name of the smile space to delete.
-           (mandatory, non-empty, at most 128 characters) 
-```
-##### Example Request
-```
-DELETE /api/smiles?space=my_private_space
-```
-##### Example Response
-The response contains a status field (with value 1 if there were no errors, and -1 if there were errors).
-This is an example of a success response
-```javascript
-{
-    "status" : 1
-}
-```
-If there were errors, then the response contains only two fields:
-```javascript
-{
-    "status" : -1,
-    "errors" : [ ...list of error messages ... ]
-}
-```
-#### **TODO 6**:
-     Create the route for `delete_smiles`. Given a space name, all smiles in that space should be deleted.   
+    ##### Query Parameters
+    ```
+    space: the name of the smile space to delete.
+            (mandatory, non-empty, at most 128 characters) 
+    ```
+    ##### Example Request
+    ```
+    DELETE /api/smiles?space=my_private_space
+    ```
+    ##### Example Response
+    The response contains a status field (with value 1 if there were no errors, and -1 if there were errors).
+    This is an example of a success response
+    ```javascript
+    {
+        "status" : 1
+    }
+    ```
+    If there were errors, then the response contains only two fields:
+    ```javascript
+    {
+        "status" : -1,
+        "errors" : [ ...list of error messages ... ]
+    }
+    ```
+    #### **TODO 6**:
+        Create the route for `delete_smiles`. Given a space name, all smiles in that space should be deleted.   
          
 5. POST /api/smiles/:id/like
-   - Increment the like_count for a smile.
+    * Increment the like_count for a smile.
       See specification in [Part2 - Task3](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/part2/README_part2.md)
       *Example Request*
       `POST /api/smiles/4/like`
@@ -195,62 +194,62 @@ If there were errors, then the response contains only two fields:
      Create the route for `post_like`. Given an ID, it increments the `like-count' by 1 and loads the smile. ( *Note: please remember that after updating the `like_count`, you should send back the updated smile story.* )
 
 ##### Testing your API using Postman
-You can use the [Postman tool](https://www.getpostman.com/postman) to test whether you set up the routes correctly. The responses your API returns should be similar to the responses you get from our backend `https://smile451.herokuapp.com` for the same requests.
+    You can use the [Postman tool](https://www.getpostman.com/postman) to test whether you set up the routes correctly. The responses your API returns should be similar to the responses you get from our backend `https://smile451.herokuapp.com` for the same requests.
 
 ---
 Task 4: Prepare the Automated Tests  (**SKIP THIS TASK**)
 ---
 
-While you write the code for the API, I strongly recommend that you spend
-some time getting the automated tests ready. We are giving you a very simple
-test framework, written in Python, along with two automated tests. The grading
-of your project will be done with the same testing framework, except that we
-will have a lot more tests. You too should add automated tests to the
-framework. Writing automated tests, and experimenting with
-running them against the backend we provide will familiarize you with
-the more subtle corners of the API that you will have to implement. Plus,
-these tests will allow you to test your own backend.
-You will even be able to debug the corner cases of the API more easily
-because the automated tests allow you to reproduce such a corner
-case. For example, you may put a breakpoint in the debugger, and then
-fire the specific automated test that you are trying to get right.
+    While you write the code for the API, I strongly recommend that you spend
+    some time getting the automated tests ready. We are giving you a very simple
+    test framework, written in Python, along with two automated tests. The grading
+    of your project will be done with the same testing framework, except that we
+    will have a lot more tests. You too should add automated tests to the
+    framework. Writing automated tests, and experimenting with
+    running them against the backend we provide will familiarize you with
+    the more subtle corners of the API that you will have to implement. Plus,
+    these tests will allow you to test your own backend.
+    You will even be able to debug the corner cases of the API more easily
+    because the automated tests allow you to reproduce such a corner
+    case. For example, you may put a breakpoint in the debugger, and then
+    fire the specific automated test that you are trying to get right.
 
-This development process is called **Test-Driven Development**.
+    This development process is called **Test-Driven Development**.
 
-The testing framework is provided to you in the `testing` directory:
-* `testing/testLib.py`: this contains two classes, one which implements
-    HTTP requests, and one that provides some helper functions for
-    operating with smiles. You may want to add more helper functions
-    to the `SmileTestCase` class.
-    * By default, each test will first run the `setUp` method, defined
-    in `testLib.SmileTestCase`. This method will **delete** all smile
-    posts in the specified smile space. This is important, because
-    you want all your tests to run in a predictable initial state.
-    * Because of this, it is important to use a distinct smile space
-    name from what other students will be using. All smiles in that
-    space will be lost after running automated tests.
-       
-* `testing/testBarely.py`: this file contains two test cases, to serve as
-    an example for you. You should write more test cases.
+    The testing framework is provided to you in the `testing` directory:
+    * `testing/testLib.py`: this contains two classes, one which implements
+        HTTP requests, and one that provides some helper functions for
+        operating with smiles. You may want to add more helper functions
+        to the `SmileTestCase` class.
+        * By default, each test will first run the `setUp` method, defined
+        in `testLib.SmileTestCase`. This method will **delete** all smile
+        posts in the specified smile space. This is important, because
+        you want all your tests to run in a predictable initial state.
+        * Because of this, it is important to use a distinct smile space
+        name from what other students will be using. All smiles in that
+        space will be lost after running automated tests.
+        
+    * `testing/testBarely.py`: this file contains two test cases, to serve as
+        an example for you. You should write more test cases.
 
-You invoke the tests as follows (on command line):
-   ```
-   python -m unittest
-   ```
-   OR
-   ```
-   python -m unittest  -v
-   ```
-   Passing the -v option to your test script will instruct unittest.main() to enable a higher level of verbosity. 
-   
-    * To enable the logging output, assign `VERBOSE` flag in `RestTestCase class` to 1 (in `testLib.py`). (If you use VERBOSE=1 you will see more detail about the messages that are sent/received. )
-   
-    * Update the `smileSpace` and `serverToTest` in  `RestTestCase class`. Current tests assume smile space `sakirenin` and 
-      run against the server installed at `localhost` at port 5000.
-      After deploying your app to Heroku, change the URL to your own. (Our  Heroku URL is `https://smile451.herokuapp.com`)
-    * You can specify a single test to run by adding the argument as follows:
-    ```python -m unittest  -v testBarely.TestSmiles.testAdd1```
-    where `testAdd1` is the test we want to run. 
+    You invoke the tests as follows (on command line):
+    ```
+    python -m unittest
+    ```
+    OR
+    ```
+    python -m unittest  -v
+    ```
+    Passing the -v option to your test script will instruct unittest.main() to enable a higher level of verbosity. 
+    
+        * To enable the logging output, assign `VERBOSE` flag in `RestTestCase class` to 1 (in `testLib.py`). (If you use VERBOSE=1 you will see more detail about the messages that are sent/received. )
+    
+        * Update the `smileSpace` and `serverToTest` in  `RestTestCase class`. Current tests assume smile space `sakirenin` and 
+        run against the server installed at `localhost` at port 5000.
+        After deploying your app to Heroku, change the URL to your own. (Our  Heroku URL is `https://smile451.herokuapp.com`)
+        * You can specify a single test to run by adding the argument as follows:
+        ```python -m unittest  -v testBarely.TestSmiles.testAdd1```
+        where `testAdd1` is the test we want to run. 
 
 
 ---
@@ -258,79 +257,79 @@ You invoke the tests as follows (on command line):
 ---
 
 1. Create a Heroku account and install the [Heroku CLI (Heroku Command Line Interface)](https://devcenter.heroku.com/articles/heroku-cli). Login to Heroku by running the following command:
-<!-- -->
-```
-heroku login
-```
-Note for Windows users: If you get the following error message when you run `heroku login` on Git Bash, try running `login` and rest of the commands on Windows command line instead. 
-`Login is currently incompatible with git bash/Cywin/MinGW.`
+    <!-- -->
+    ```
+    heroku login
+    ```
+    Note for Windows users: If you get the following error message when you run `heroku login` on Git Bash, try running `login` and rest of the commands on Windows command line instead. 
+    `Login is currently incompatible with git bash/Cywin/MinGW.`
 
 
 2. Create an app on Heroku and give it a name. Your herokuappname should match with the name of your GitHub repo (i.e., lastname-warmup). 
-<!-- -->
-```
-heroku create <lastname-warmup> 
-```
+    <!-- -->
+    ```
+    heroku create <lastname-warmup> 
+    ```
 
-example: heroku create sakire-smile451 (this must be unique to you
+    example: heroku create sakire-smile451 (this must be unique to you
 
-3. Edit the `requirements.txt` file and add the following  (don't delete the current commands).
-```
-gunicorn
-```
-   Gunicorn is a pure-Python HTTP server. It allows you to run any Python application concurrently by running multiple Python processes within a single Heroku dyno. You don't need `gunicorn` when you run your server on the localhost.
+    3. Edit the `requirements.txt` file and add the following  (don't delete the current commands).
+    ```
+    gunicorn
+    ```
+    Gunicorn is a pure-Python HTTP server. It allows you to run any Python application concurrently by running multiple Python processes within a single Heroku dyno. You don't need `gunicorn` when you run your server on the localhost.
 
 4. Create the database file (`db_create.py`) which includes the following: 
-```
-from app import db
-db.create_all()
-```
-`db_create.py`  will create your database in Heroku.
+    ```
+    from app import db
+    db.create_all()
+    ```
+    `db_create.py`  will create your database in Heroku.
 
 5. Edit `app.py` and comment out the `db.create_all()` in function `main()`. 
 
-   Heroku will run the `Procfile` to initialize the app, which will call `db_create.py` script to create the database. Therefore, there is no need to call `db.create_all()` in the `main`.
+    Heroku will run the `Procfile` to initialize the app, which will call `db_create.py` script to create the database. Therefore, there is no need to call `db.create_all()` in the `main`.
 
-   Note: When you run the app on `localhost`, if you need to initialize the database, enable this line before you run `app.py`
+    Note: When you run the app on `localhost`, if you need to initialize the database, enable this line before you run `app.py`
 
 6. Create the procfile file (`Procfile`)  and copy the following lines to the `Procfile`. 
-```
-web: gunicorn app:app
-init: python db_create.py
-```
-The `Procfile` will tell Heroku how to run your app.
+    ```
+    web: gunicorn app:app
+    init: python db_create.py
+    ```
+    The `Procfile` will tell Heroku how to run your app.
 
 7. Copy the `app.py`, `requirements.txt`, `db_create.py`, `Procfile`, and `sqlalchemy-demo.db` from the `<appname>` directory (where you currently are) to  your local repo directory, i.e.,
-```
-cp app.py requirements.txt db_create.py Procfile  sqlalchemy-demo.db ../.
-```
-and then go to your local repo directory, i.e., 
-```
-cd ..
-```
+    ```
+    cp app.py requirements.txt db_create.py Procfile  sqlalchemy-demo.db ../.
+    ```
+    and then go to your local repo directory, i.e., 
+    ```
+    cd ..
+    ```
 
 8. Run these commands in your project directory to add and commit your code to Git:
-<!-- -->
-```
-git add .
-```
+    <!-- -->
+    ```
+    git add .
+    ```
 
 9. Commit your files 
-```
-git commit -am "adding files for heroku deployment"
-```
+    ```
+    git commit -am "adding files for heroku deployment"
+    ```
 
 10. Push your application to Heroku
-```
-git push heroku part3:master
-```
+    ```
+    git push heroku part3:master
+    ```
 
-If there are no errors, your API should be deployed on Heroku. (eg: https://sakire-smile451.herokuapp.com) To test whether your API on Heroku works, make GET and POST calls to your Heroku API using Postman. Replace the localhost address with the Heroku URL,i.e.,
-instad of 
-`http://localhost:5000/api/smiles`
-you should have:
-`https://sakire-smile451.herokuapp.com/api/smiles`
-(assuming the application name is `sakire-smile451`. You should replace this with the name you provided when you created the Heroku application i.e.,  `<herokuappname>` )
+    If there are no errors, your API should be deployed on Heroku. (eg: https://sakire-smile451.herokuapp.com) To test whether your API on Heroku works, make GET and POST calls to your Heroku API using Postman. Replace the localhost address with the Heroku URL,i.e.,
+    instad of 
+    `http://localhost:5000/api/smiles`
+    you should have:
+    `https://sakire-smile451.herokuapp.com/api/smiles`
+    (assuming the application name is `sakire-smile451`. You should replace this with the name you provided when you created the Heroku application i.e.,  `<herokuappname>` )
 
   If you get an error check the Heroku logs and troubleshoot the problems. See the below link.
   [https://devcenter.heroku.com/articles/logging](https://devcenter.heroku.com/articles/logging)
@@ -347,10 +346,10 @@ because you will need to deploy your code to Heroku as well as git.
 2.  Commit your changes locally. Make sure you are in branch `part3`.
 
     Push the `part3` branch to GitHub:
-```
-git push origin part3
-```
-   - You can submit multiple times, after intermediate tasks, but on the deadline
+    ```
+    git push origin part3
+    ```
+    * You can submit multiple times, after intermediate tasks, but on the deadline
       you need to have submitted the end result.
  
 3. You must deploy your application to Heroku before the deadline. You can
@@ -358,14 +357,14 @@ follow the standard Heroku instructions, with the exception of `git init` (as
 explained in Task 0 above) and the exact command to push your local repo to
 Heroku. Since you are using local branch `part3` you need to run the following
 command to push changes to Heroku:
-```
-git push heroku part3:master
-```
+    ```
+    git push heroku part3:master
+    ```
    You can deploy multiple times to Heroku, after intermediate tasks, but on the deadline you need to have submitted the end result.
 
 4.	Create a Wiki page on Github and write your Heroku URL. See the [warmup_project_322 repo](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/wiki/Heroku-URL) for an example.      
 
-You are Done!
+    You are Done!
 ---
 
 We hope you are smiling ! Let's get ready for the real project now. 
