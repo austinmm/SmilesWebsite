@@ -147,22 +147,22 @@ Add elements for all of the following. Don't worry about positioning or styling 
 1. "`Share a smile`" link that points to `create.html` for posting a new smile.
    Add the link to the existing `<div>` with HTML class "`create`" in the `<header>`.
 1. Smile post. Each post should show its:
-    * Title. Use a `<div>` element with HTML class "`title`".
-    * Happiness level. We'll be using a CSS background-image in Task 2.3 for
+    * **Title.** Use a `<div>` element with HTML class "`title`".
+    * **Happiness level.** We'll be using a CSS background-image in Task 2.3 for
      this one, so for now, just create a `<div>` with the HTML class
      "`happiness-level`" and write "`Lvl`" in it.
      Next, we'll customize the post to have a specific happiness
      levels: add an additional HTML class "`happiness-level-1`" to
      the `<div>` for first post.  
-    * Story text. Use a story text that is more than a few lines long, so you
+    * **Story text.** Use a story text that is more than a few lines long, so you
      can fully test the automatic resizing that we'll
      get to later. Use a `<div>` element with HTML class "`story`".
-    * Like button for if this post made you smile.
+    * **Like button** for if this post made you smile.
       Use a `<button>` element with the HTML class "`like`" and the text
       "Like" (we'll change this later to an image). 
-    * Number of people who this post made smile.
+    * **Number of people** who this post made smile.
      Use a `<div>` element with the HTML class "`count`", and contents a number.
-    * Timestamp for when this was posted.
+    * **Timestamp** for when this was posted.
       Use a `<div>` with HTML class "`timestamp`", and contents of the form "Posted at 1:03pm May 22, 2015".
 
 1. Create 2 more smile posts, with stories about something that happened that made you smile, or something someone did for you that you're grateful for. 
