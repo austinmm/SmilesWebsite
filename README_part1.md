@@ -115,15 +115,15 @@ modify to implement the project.
         - `index.html` home page
     * static/scripts (not needed for Part 1; will need for Part 2)
         
-   You will have to make changes to the .css and the .html files.
+    You will have to make changes to the .css and the .html files.
 
 7. Open the `index.html` file with a browser to see the initial
    version of the provided files.
-    - for Chrome, File/Open File, choose warmup_project_322/static/index.html
+    * for Chrome, File/Open File, choose yourusername-warmup/static/index.html
     
-   At this point if you open `index.html` it should look like this:
+    At this point if you open `index.html` it should look like this:
    
-<img src="README.d/index-0.png" width="600" border="1">
+    <img src="README.d/index-0.png" width="600" border="1">
 
 ---
 ### Task 2: The Home Page
