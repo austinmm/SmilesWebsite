@@ -231,7 +231,8 @@ inline CSS in HTML tags, please don't do that!
 At this point if you open `index.html` it should look like this. If you scrolled
 it down a bit the header should stay fixed:
 
-![Part 1 Task 2.2](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/tree/part1/README.d/index-1-2.2.png)
+<img src="README.d/index-1-2.2.png" width="600">
+[Part 1 Task 2.2]
 
 
 #### Task 2.3: Stylin' It Pretty
