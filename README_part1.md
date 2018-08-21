@@ -73,11 +73,13 @@ origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skele
 ```
 git remote remove origin
 ```
+
 4. Next you need to add your repository as the new origin.
 ```
 git remote add origin https://gitlab.eecs.wsu.edu/322-fall18-arslanay/yourlastname-warmup.git
 ```
 You can `git remote -v` to test to make sure origin is changed.
+
 
 5. Push the code to your new branch.
 ```
@@ -86,11 +88,12 @@ git push --all
 ```
 Now if you go to your EECS GitLab repo, you will see all of the relevant files.
 
-To keep your local reponame consistent, rename your local repodirectory. 
+To keep your local reponame consistent, rename your local repo directory. 
 ```
 cd ..
-mv warmup_project_322_skeleton/ arslanay-warmup
+mv warmup_project_322_skeleton/ yourlastname-warmup
 ```
+
 
 6. Switch to branch named `part1`
 ```
@@ -119,7 +122,7 @@ mv warmup_project_322_skeleton/ arslanay-warmup
     
    At this point if you open `index.html` it should look like this:
    
-<img src="README.d/index-0.png" width="600" border="1px">
+<img src="README.d/index-0.png" width="600" border="1">
 
 ---
 ### Task 2: The Home Page
