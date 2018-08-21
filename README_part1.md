@@ -15,7 +15,7 @@ So what can you do in the app? You'll be building out these features:
 
 This is how it is going to look at the end of Part 1 of the project:
 
-<img src="README.d/index-1-3.png" width="500">
+<img src="README.d/index-1-3.png" width="600">
 
 ## Acknowledgments
 
@@ -27,13 +27,11 @@ The Smile project was initially designed by
 In part 1, you'll be building the UI (user interface) for the app. It won't be hooked in to a database yet to store the smiles you create - that will come in part 2. This part is just about learning how to build UI using semantic HTML, customize the layout, style it, and make it responsive - responsive, meaning the UI scales nicely for desktop browsers and mobile phone browsers.
 
 Some of you may know HTML/CSS pretty well already. But since this is a junior level class most students usually have little experience with HTML and CSS,
-and we want all of you to be ready when it comes time for team projects. If
-you're experienced in HTML/CSS and finish early, be nice and help out your
+and we want all of you to be ready when it comes time for team projects. If you're experienced in HTML/CSS and finish early, be nice and help out your
 classmates by answering questions.
 
 This Part 1 is structured in several Tasks. This sequence of tasks
-is for your convenience, so that you can proceed in relatively small
-steps and check your work.
+is for your convenience, so that you can proceed in relatively small steps and check your work.
 You will submit, and we will only grade, only the end result, after Task 4.
 
 ---
@@ -42,26 +40,24 @@ You will submit, and we will only grade, only the end result, after Task 4.
 To help you start we have provided some boilerplate files that you will have to
 modify to implement the project.
 
-**Important note:** If you are new to Git and haven’t used EECS GitHub server, please check out the [github_basics.txt](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/blob/part1/github_basic.txt) document first.
+**Important note:** If you are new to Git and haven’t used EECS GitLab server, please check out the [github_basics.txt](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/blob/part1/github_basic.txt) document first.
  
 
-1. Clone the repository [warmup_project_322 repository](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322) on the working machine
+1. Clone the repository [warmup_project_322_skeleton repository](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton) on the working machine
 ```
-git clone https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322.git
+git clone https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git
 ```
-  You'll be prompted to enter your username and password, the pair you used to login github.eecs.wsu.edu. If succeed, you'll see a new directory show up.
+  You'll be prompted to enter your username and password, the pair you used to login gitlab.eecs.wsu.edu. If succeed, you'll see a new directory show up.
   
 2. Next, you need to checkout all of the branches that have already been created for you.
 ```
 git checkout part1
 git checkout part2
 git checkout part3
-git checkout gh-pages
 git checkout master
 ```
 
-3. You now have a local copy of the `warmup_project_322` repository. You need to create your own **private** repository and commit everything to this new repository.
-On your EECS GitHub account find the "+" sign to create a new repository. Name your new repository **yourlastname-warmup** (use your own lastname)
+3. You now have a local copy of the `warmup_project_322_skeleton` repository. Now, you need to copy the skeleton code to you own **private** repository that we created and commit everything to this repository.
 
 ```
 git remote -v
@@ -69,8 +65,8 @@ git remote -v
 This will display all remote repositories. Currently, it should show the following:
 ```
 git remote -v
-origin  https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322.git (fetch)
-origin  https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322.git (push)
+origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git (fetch)
+origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git (push)
 ```
 Change the commit origin with the following command to your new repository.
 ```
@@ -78,13 +74,13 @@ git remote remove origin
 ```
 4. Next you need to add your repository as the new origin.
 ```
-git remote add origin https://github.eecs.wsu.edu/yourusername/yourlastname-warmup
+git remote set-url origin https://gitlab.eecs.wsu.edu/322-fall18-arslanay/yourlastname-warmup.git
 ```
 You can `git remote -v` to test to make sure origin is changed.
 
 5. Push the code to your new branch.
 ```
-git push --set-upstream origin master
+git push --set-upstream origin master --force
 git push --all
 ```
 
