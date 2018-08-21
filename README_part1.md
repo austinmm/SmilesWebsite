@@ -4,7 +4,7 @@ Before we jump into the main team projects, we will practice with web
 development by building a Smile app.
 It's split into three parts, each with different due dates - (1) HTML/CSS, (2) Javascript, and (3) Testing/Backend.
 
-This is an individual project. You can collaborate and help each other out with parts you're stuck on, but do not cheat and share code. If you use online resources, please reference them with comments in your code. We want you to learn how to do each of these parts. You'll need to know it for the main team project and quizzes.
+This is an individual project. You can collaborate and help each other out with parts you're stuck on, but do not cheat and share code. If you use online resources, please reference them with comments in your code. We want you to learn how to do each of these parts. You'll need to know it for the main team project and exams.
 
 Smile is an app to share experiences from your day that made you smile and things people did that you are grateful for. It's inspired by the Gratitude Journal. Psychologists did a series of research experiments where they had individuals write down three things they are grateful for each day, and it significantly boosted their happiness. But instead of keeping a super secret personal journal, why not spread the happiness? We know some people write pretty personal things, so all posts will be anonymous.
 
@@ -15,7 +15,8 @@ So what can you do in the app? You'll be building out these features:
 
 This is how it is going to look at the end of Part 1 of the project:
 
-![Smile](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/tree/part1/README.d/index-1-3.png)
+![Smile]()
+![](README.d/index-1-3.png)
 
 ## Acknowledgments
 
