@@ -69,7 +69,7 @@ git remote -v
 origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git (fetch)
 origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git (push)
 ```
- ow, you need to copy the skeleton code to you own **private** repository that we created and commit everything to this repository. Change the commit origin with the following command to your new repository (i.e., yourlastname-warmup).
+Now, you need to copy the skeleton code to you own **private** repository that we created and commit everything to this repository. Change the commit origin with the following command to your new repository (i.e., yourlastname-warmup).
 ```
 git remote remove origin
 ```
