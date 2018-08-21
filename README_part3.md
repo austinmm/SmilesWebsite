@@ -33,7 +33,7 @@ repository.
 3. You will now be editing locally. If you need to move the files that you had for Part 2, feel free to do so. And **remember to commit frequently**. 
 
 ---
-Task 2: Setup Flask on your `localhost`
+Task 1: Setup Flask on your `localhost`
 ---
 1. If you haven't yet, go ahead and install [Python](https://www.python.org/downloads/). (Your Python version should be 3.4.x or higher. Latest version is 3.7.0)
 
@@ -43,6 +43,7 @@ Task 2: Setup Flask on your `localhost`
 
 2. If your system is Windows, open the GitBash; if Mac or Linux, open a terminal. 
    Run the following commands to install flask and flask-sqlalchemy. 
+
     on `Windows`:
     ```
     pip install flask
