@@ -63,22 +63,24 @@ git checkout master
 ```
 git remote -v
 ```
-   This will display all remote repositories. Currently, it should show the following:
+This will display all remote repositories. Currently, it should show the following:
 ```
 git remote -v
 origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git (fetch)
 origin  https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton.git (push)
 ```
-   Now, you need to copy the skeleton code to you own **private** repository that we created and commit everything to this repository. Change the commit origin with the following command to your new repository (i.e., yourlastname-warmup).
+Now, you need to copy the skeleton code to you own **private** repository that we created and commit everything to this repository. Change the commit origin with the following command to your new repository (i.e., yourlastname-warmup).
+
 ```
 git remote remove origin
 ```
 
 4. Next you need to add your repository as the new origin.
+
 ```
 git remote add origin https://gitlab.eecs.wsu.edu/322-fall18-arslanay/yourlastname-warmup.git
 ```
-   You can `git remote -v` to test to make sure origin is changed.
+You can `git remote -v` to test to make sure origin is changed.
 
 
 5. Push the code to your new branch.
