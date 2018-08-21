@@ -153,8 +153,7 @@ Add elements for all of the following. Don't worry about positioning or styling 
      "`happiness-level`" and write "`Lvl`" in it.
      Next, we'll customize the post to have a specific happiness
      levels: add an additional HTML class "`happiness-level-1`" to
-     the `<div>` for first post.
-     
+     the `<div>` for first post.  
     * Story text. Use a story text that is more than a few lines long, so you
      can fully test the automatic resizing that we'll
      get to later. Use a `<div>` element with HTML class "`story`".
