@@ -271,21 +271,22 @@ and `background-image: url('../images/heart.png');`; adjust `height` and
  you wrote in the HTML does not show up.)
 
 1. Replace the `Lvl` text with the happiness level icons in `images/happiness-level.png`. 
-  ![happiness level](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/tree/part1/static/images/happiness-level.png)
-  Or create your own three-icon sprite. (Hint: `background-image`)
+  <img src="https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/master/static/images/happiness-level.png">
+  Or create your own three-icon sprite. 
   
-    - You'll notice there are 3 images in one png. This is called a sprite. Developers often combine a bunch of icons onto one file to speed up page load time since every image requires a network request. (E.g. this is the [sprite Google Doc uses](https://ssl.gstatic.com/docs/common/h_sprite11.svg))
-    - You'll want to use `background-image` to specify the image file. Set
+    * You'll notice there are 3 images in one png. This is called a sprite. Developers often combine a bunch of icons onto one file to speed up page load time since every image requires a network request. (E.g. this is the [sprite Google Doc uses](https://ssl.gstatic.com/docs/common/h_sprite11.svg))
+    * You'll want to use `background-image` to specify the image file. Set
       `width` to `40px` and `height` to `80px` (the size of one icon in the
       sprite). Set `background-repeat` to turn off repeating the image. 
-    - Add CSS definitions for each of the 3 happiness levels (e.g.,
+    * Add CSS definitions for each of the 3 happiness levels (e.g.,
       "`.happiness-level-1`") to position the sprite so it shows the right
       icon. Use `background-position: ...px ...px`.
 
 
 At this point if you open `index.html` it should look like this:
 
-![Part 1 Task 2.3](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/tree/part1/README.d/index-1-2.3.png)
+<img src="README.d/index-1-2.3.png" width="600">
+[Part 1 Task 2.3]
 
 ---
 ### Task 3: Responsive Layout for Desktop and Mobile
@@ -309,15 +310,16 @@ At the bottom of `styles/main.css`, you'll see a `@media screen` definition. `(m
    larger or smaller than 800px and 1200px.
 1. You may notice that when you resize the screen some of the longer smiles
   are split over multiple columns. To prevent this you may want to add
-```css 
-.smile {
-   display:inline-block;
-}
-```
+  ```css 
+  .smile {
+    display:inline-block;
+  }
+  ```
 
 At this point if you open `index.html` it should look like this:
 
-![Part 1 Task 3](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/tree/part1/README.d/index-1-3.png)
+<img src="README.d/index-1-3.png" width="600">
+[Part 1 Task 3]
 
 ---
 ### Task 4: The Create Page
