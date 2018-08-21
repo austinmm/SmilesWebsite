@@ -75,9 +75,9 @@ Task 2: Setup Flask on your `localhost`
     pip install -r requirements.txt
     ```
 
-    **Download [app.py](https://gist.github.com/t-walker/c15eb065eae6805de4057379dd35e786) into your app folder which has code to get you started.**
+5. **Download [app.py](https://gist.github.com/t-walker/c15eb065eae6805de4057379dd35e786) into your app folder which has code to get you started.**
 
-5. Run the following command to run your `app` on your `localhost`. 
+6. Run the following command to run your `app` on your `localhost`. 
     On Windows:
     ```
     python app.py 
