@@ -341,7 +341,7 @@ Open up `create.html`.
    this make you?`". Add it before the `select`.
 1. Add a submit button using `<input type="submit"/>` with HTML class `submit-input`.
   - In forms, we typically use `<input type="submit">` rather than `<button>`. `<button>`s are typically used for clickable items that don't take user to a different web page.
-7. Change the submit button's text to `Post`.
+1. Change the submit button's text to `Post`.
   - Click on the button. It should take you to your home page. Browsers by
     default handle clicking on `<input type="submit">` to redirect users to
     wherever the `<form>`'s `action` attribute specified.
@@ -349,12 +349,13 @@ Open up `create.html`.
     string, such as, "?title=title&story=blah&happiness-level=2". This is
     what happens by default for a `form` with the `method=get`, as we have
     defined our form for now.
-8. Last, add a "`Cancel`" link onto the create form in case the user doesn't want to make the post. On click, take the user back to the home page.
+1. Last, add a "`Cancel`" link onto the create form in case the user doesn't want to make the post. On click, take the user back to the home page.
 
 At this point if you open `create.html` (or if you click the `Share a smile`
 button on `index.html`) it should look like this:
 
-![Part 1 Task 4.1](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/tree/part1/README.d/create-1-4.1.png)
+<img src="README.d/create-1-4.1.png" width="600">
+[Part 1 Task 4.1]
 
 
 #### Task 4.2: Getting the Form Layout Right
@@ -377,7 +378,8 @@ All the form elements stack up squished horizontally. Let's make it look nicer.
 At this point if you open `create.html` (or if you click the `Share a smile`
 button on `index.html`) it should look like this:
 
-![Part 1 Task 4.2](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/tree/part1/README.d/create-1-4.2.png)
+<img src="README.d/create-1-4.2.png" width="600">
+[Part 1 Task 4.2]
 
 
 #### Task 4.3: Stylin' Forms
@@ -395,10 +397,9 @@ You can style the rest of the form however you'd like - e.g. make the cancel lin
 At this point if you open `create.html` (or if you click the `Share a smile`
 button on `index.html`) it should look like this:
 
-![Part 1 Task 4.3](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/tree/part1/README.d/create-1-4.3.png)
+<img src="README.d/create-1-4.3.png" width="600">
 
-
-You're done! Feel free to add additional styling to make your app look even better. Get creative!
+**You're done!** Feel free to add additional styling to make your app look even better. Get creative!
 
 ---
 ### How to Submit
@@ -409,22 +410,20 @@ We'll use Github Pages to host your Smile app. To set this up:
 1.  Commit your changes locally. Make sure you are in branch `part1`. (git checkout part1)
 
 1. Push the `part1` branch to GitHub:
-```
-  git push origin part1
-```
-   - You can submit multiple times, after intermediate tasks, but on the deadline
+    ```
+    git push origin part1
+    ```
+    - You can submit multiple times, after intermediate tasks, but on the deadline
       you need to have submitted the end result.
    
-3. GitHub has a feature whereby it can host your HTML files. To enable
-    this feature you must have a branch named `gh-pages`.
-    For now, we will set this to be your submission to Part 1 of the
-    project:
-```
-git push -f origin part1:gh-pages
-```
+1. GitHub has a feature whereby it can host your HTML files. To enable this feature you must have a branch named `gh-pages`.
+    For now, we will set this to be your submission to Part 1 of the project:
+    ```
+    git push -f origin part1:gh-pages
+    ```
 
-- Now your finished project should be up on https://github.eecs.wsu.edu/your_username/warmup_project_322/static  (master branch of your repo)
-- We will use this url to see and grade your project. Please do not change your gh-pages branch until you hear that we have graded Part 1.
+- Now your finished project should be up on https://gitlab.eecs.wsu.edu/322-fall18-arslanay/yourusername-warmup/tree/part1  (part1 branch of your repo)
+- We will use this url to see and grade your project. Please do not change your gh-pages and part1 branches until you hear that we have graded Part 1.
 
 #### Second : Submit on Blackboard. 
 
