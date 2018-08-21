@@ -123,24 +123,24 @@ You can now proceed to write the code for implementing the API.
 You will have to implement the following API entry points:
 
 1. GET /api/smiles
-    - Read smiles. See specification in
-      [Part2 - Task2](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/part2/README_part2.md#Display-All-Smiles)
-      
-      *Example Request*
-      `GET /api/smiles?space=initial&count=5&order_by=created_at`
-      
-      Part of the implementation for creating the route for `index` (i.e., loading all smiles) is provided to you in the skeleton code (`index()` function). Complete tasks TODO #1 and TODO #2 to order the retrieved stories based on the specified attribute value and to limit the number of stories. 
+    * Read smiles. See specification in
+    [Part2 - Task2](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/part2/README_part2.md#Display-All-Smiles)
+        
+    *Example Request*
+    `GET /api/smiles?space=initial&count=5&order_by=created_at`
+        
+    Part of the implementation for creating the route for `index` (i.e., loading all smiles) is provided to you in the skeleton code (`index()` function). Complete tasks TODO #1 and TODO #2 to order the retrieved stories based on the specified attribute value and to limit the number of stories. 
 
 #### **TODO 2**:
-      Set the column which you are ordering on (if it exists)
+    Set the column which you are ordering on (if it exists)
       
 #### **TODO 3**:
-     Limit the number of posts based on the count (if it exists)
+    Limit the number of posts based on the count (if it exists)
 
 2. POST /api/smiles/:id
-   - Loads a smile given the id as a value in the URL.
-     *Example Request*
-      `POST /api/smiles/4`
+    Loads a smile given the id as a value in the URL.
+    *Example Request*
+    `POST /api/smiles/4`
       
 #### **TODO 4**:
      Create the route for `show` to load a smile with the given id.   
