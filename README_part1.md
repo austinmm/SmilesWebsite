@@ -14,9 +14,7 @@ So what can you do in the app? You'll be building out these features:
 - Like a smile
 
 This is how it is going to look at the end of Part 1 of the project:
-
-![Smile]()
-![](README.d/index-1-3.png)
+![](README.d/index-1-3.png | width=100)
 
 ## Acknowledgments
 
