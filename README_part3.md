@@ -4,14 +4,13 @@
 
 Last part of the warmup project!     
 Now you'll get to build your own server for the API and also hook it into your frontend app. 
-We provide you an example RESTful web service ![people.py](https://gist.github.com/t-walker/29e5a2a5b0c6b2a03ba2e9084182cfa4) using Python and the Flask microframework to get you started. 
+** We provide you an example RESTful web service [people.py](https://gist.github.com/t-walker/29e5a2a5b0c6b2a03ba2e9084182cfa4)** using Python and the Flask microframework to get you started. 
 
 If you would like to view a [tutorial] on Flask(https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) for reference please do so.
 
 **Deploying the application to Heroku is a non-trivial step, do not leave it for the last minute.**
 
-   You will be deploying your application on Heroku and you will have to submit
-   the Heroku app URL to us. 
+   You will be deploying your application on Heroku and you will have to submit    the Heroku app URL to us. 
    
 ---
 ### Task 0: Git branch structure
