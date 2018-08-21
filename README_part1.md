@@ -407,11 +407,11 @@ button on `index.html`) it should look like this:
 #### First:  Submit on Github
 We'll use Github Pages to host your Smile app. To set this up:
 
-1.  Commit your changes locally. Make sure you are in branch `part1`. (`git checkout part1`)
+1.  Commit your changes locally. Make sure you are in branch `part1`. 
     ```
     git checkout part1
     git add .
-    git commit -m "Your commit message"
+    git commit -m "Your own commit message"
     ```
 
 1. Push the `part1` branch to GitHub:
