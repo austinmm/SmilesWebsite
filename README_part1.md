@@ -40,7 +40,7 @@ You will submit, and we will only grade, only the end result, after Task 4.
 To help you start we have provided some boilerplate files that you will have to
 modify to implement the project.
 
-**Important note:** If you are new to Git and haven’t used EECS GitLab server, please check out the [github_basics.txt](https://github.eecs.wsu.edu/322-fall17-arslanay/warmup_project_322/blob/part1/github_basic.txt) document first.
+**Important note:** If you are new to Git and haven’t used EECS GitLab server, please check out the [github_basics.txt](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton/blob/master/github_basic.txt) document first.
  
 
 1. Clone the repository [warmup_project_322_skeleton repository](https://gitlab.eecs.wsu.edu/322-fall18-arslanay/warmup_project_322_skeleton) on the working machine
