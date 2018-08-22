@@ -255,31 +255,15 @@ Task 4: Prepare the Automated Tests  (**SKIP THIS TASK**)
 ---
 ### Task 5: Setting-up your Flask App on Heroku
 ---
+First we will include the commands to setup the enviroment on Heroku.
 
-1. Create a Heroku account and install the [Heroku CLI (Heroku Command Line Interface)](https://devcenter.heroku.com/articles/heroku-cli). Login to Heroku by running the following command:
-    <!-- -->
-    ```
-    heroku login
-    ```
-    Note for Windows users: If you get the following error message when you run `heroku login` on Git Bash, try running `login` and rest of the commands on Windows command line instead. 
-    `Login is currently incompatible with git bash/Cywin/MinGW.`
-
-
-2. Create an app on Heroku and give it a name. Your herokuappname should match with the name of your GitHub repo (i.e., lastname-warmup). 
-    <!-- -->
-    ```
-    heroku create <lastname-warmup> 
-    ```
-
-    example: heroku create sakire-smile451 (this must be unique to you
-
-    3. Edit the `requirements.txt` file and add the following  (don't delete the current commands).
+1. Edit the `requirements.txt` file and add the following  (don't delete the current commands).
     ```
     gunicorn
     ```
     Gunicorn is a pure-Python HTTP server. It allows you to run any Python application concurrently by running multiple Python processes within a single Heroku dyno. You don't need `gunicorn` when you run your server on the localhost.
 
-4. Create the database file (`db_create.py`) which includes the following: 
+2. Create the database file (`db_create.py`) which includes the following: 
     ```
     from app import db
     db.create_all()
@@ -299,14 +283,29 @@ Task 4: Prepare the Automated Tests  (**SKIP THIS TASK**)
     ```
     The `Procfile` will tell Heroku how to run your app.
 
-7. Copy the `app.py`, `requirements.txt`, `db_create.py`, `Procfile`, and `sqlalchemy-demo.db` from the `<appname>` directory (where you currently are) to  your local repo directory, i.e.,
+7. Make sure the database file (`sqlalchemy-demo.db`) is in your local repo directory. 
+
+Now we will login Heroku, create and deploy our app.
+
+1. Create a Heroku account and install the [Heroku CLI (Heroku Command Line Interface)](https://devcenter.heroku.com/articles/heroku-cli). Login to Heroku by running the following command:
+    <!-- -->
     ```
-    cp app.py requirements.txt db_create.py Procfile  sqlalchemy-demo.db ../.
+    heroku login
     ```
-    and then go to your local repo directory, i.e., 
+    
+    **Note for Windows users:** If you get the following error message when you run `heroku login` on Git Bash, try running `login` and rest of the commands on Windows command line instead. 
+    `Login is currently incompatible with git bash/Cywin/MinGW.`
+
+
+2. Create an app on Heroku and give it a name. Your herokuappname should match with the name of your GitLab repo (i.e., yourlastname-warmup). 
+    <!-- -->
     ```
-    cd ..
+    heroku create <yourlastname-warmup> 
     ```
+
+    example: 'heroku create arslanay-warmup'
+    (*yourlastname*-warmup should be an available app name. Contact the TAs if it is not available.)
+
 
 8. Run these commands in your project directory to add and commit your code to Git:
     <!-- -->
@@ -324,12 +323,12 @@ Task 4: Prepare the Automated Tests  (**SKIP THIS TASK**)
     git push heroku part3:master
     ```
 
-    If there are no errors, your API should be deployed on Heroku. (eg: https://sakire-smile451.herokuapp.com) To test whether your API on Heroku works, make GET and POST calls to your Heroku API using Postman. Replace the localhost address with the Heroku URL,i.e.,
+    If there are no errors, your API should be deployed on Heroku. (eg: https://arslanay-warmup.herokuapp.com) To test whether your API on Heroku works, make GET and POST calls to your Heroku API using Postman. Replace the localhost address with the Heroku URL,i.e.,
     instad of 
     `http://localhost:5000/api/smiles`
     you should have:
-    `https://sakire-smile451.herokuapp.com/api/smiles`
-    (assuming the application name is `sakire-smile451`. You should replace this with the name you provided when you created the Heroku application i.e.,  `<herokuappname>` )
+    `https://arslanay-warmup.herokuapp.com/api/smiles`
+    (assuming the application name is `arslanay-warmup`. You should replace this with the name you provided when you created the Heroku application i.e.,  `<herokuappname>` )
 
   If you get an error check the Heroku logs and troubleshoot the problems. See the below link.
   [https://devcenter.heroku.com/articles/logging](https://devcenter.heroku.com/articles/logging)
