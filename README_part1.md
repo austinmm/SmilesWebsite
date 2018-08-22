@@ -104,6 +104,7 @@ modify to implement the project.
     You will now be editing locally, and **remember to commit frequently**.
 
     You will find the following provided files:
+    
         * static/images
             * `favicon.png` icon that shows on the browser tab
             * `happiness-level.png` sprite for three levels of happiness
