@@ -194,7 +194,7 @@ You will have to implement the following API entry points:
     Create the route for `post_like`. Given an ID, it increments the `like-count' by 1 and loads the smile. ( *Note: please remember that after updating the `like_count`, you should send back the updated smile story.* )
 
 ##### Testing your API using Postman
-You can use the [Postman tool](https://www.getpostman.com/postman) to test whether you set up the routes correctly. The responses your API returns should be similar to the responses you get from our backend `https://smile451.herokuapp.com` for the same requests.
+You can use the [Postman tool](https://www.getpostman.com/postman) to test whether you set up the routes correctly. The responses your API returns should be similar to the responses you get from our backend `https://smile322.herokuapp.com` for the same requests.
 
 ---
 Task 4: Prepare the Automated Tests  (**SKIP THIS TASK**)
@@ -246,7 +246,7 @@ Task 4: Prepare the Automated Tests  (**SKIP THIS TASK**)
     
         * Update the `smileSpace` and `serverToTest` in  `RestTestCase class`. Current tests assume smile space `sakirenin` and 
         run against the server installed at `localhost` at port 5000.
-        After deploying your app to Heroku, change the URL to your own. (Our  Heroku URL is `https://smile451.herokuapp.com`)
+        After deploying your app to Heroku, change the URL to your own. (Our  Heroku URL is `https://smile322.herokuapp.com`)
         * You can specify a single test to run by adding the argument as follows:
         ```python -m unittest  -v testBarely.TestSmiles.testAdd1```
         where `testAdd1` is the test we want to run. 
