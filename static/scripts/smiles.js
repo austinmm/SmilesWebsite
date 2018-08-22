@@ -6,7 +6,7 @@ var Smile = (function() {
     // The backend we'll use for Part 2. For Part 3, you'll replace this 
     // with your backend.
     // var apiUrl = 'https://smile451.herokuapp.com';  //Ruby on Rails backend
-    var apiUrl = 'https://arslanay-warmup.herokuapp.com';      //Flask-Python backend
+    var apiUrl = 'https://arslanay-warmup.herokuapp.com';    //Flask-Python backend
     //var apiUrl = 'http://localhost:5000'; //backend running on localhost
 
     // FINISH ME (Task 4): You can use the default smile space, but this means
