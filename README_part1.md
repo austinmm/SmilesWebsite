@@ -104,17 +104,17 @@ modify to implement the project.
     You will now be editing locally, and **remember to commit frequently**.
 
     You will find the following provided files:
-         * static/images
-             * `favicon.png` icon that shows on the browser tab
-             * `happiness-level.png` sprite for three levels of happiness
-             * `heart.png` icon for like button
-             * `smile.png` app logo
-         * static/styles
+        * static/images
+            * `favicon.png` icon that shows on the browser tab
+            * `happiness-level.png` sprite for three levels of happiness
+            * `heart.png` icon for like button
+            * `smile.png` app logo
+        * static/styles
             * `main.css` where all the styling goes
-         * static/html    
+        * static/html    
             * `create.html` create page
             * `index.html` home page
-         * static/scripts (not needed for Part 1; will need for Part 2)
+        * static/scripts (not needed for Part 1; will need for Part 2)
             
     You will have to make changes to the .css and the .html files.
 
