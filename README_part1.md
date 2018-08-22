@@ -94,6 +94,7 @@ modify to implement the project.
     ```
     cd ..
     mv warmup_project_322_skeleton/ yourlastname-warmup
+    cd yourlastname-warmup
     ```
 
 6. Switch to branch named `part1`
