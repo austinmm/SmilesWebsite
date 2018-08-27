@@ -1,11 +1,83 @@
 
 body {
-	margin: 0;
-        width: 100%;
-        height: 100%;
-        position: relative;
+	margin: 30px 0px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: cornflowerblue;
 }
 
+header{
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+header .create{
+	clear: both;
+	width: 100%;
+}
+
+header .my-button{
+	color: black;
+	width:80%;
+	background-color: yellow;
+	padding: 10px 0px;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.mainbody{
+	width: 100%;
+}
+
+.smile{
+	float: left;
+	width: 45%;
+	height: auto;
+	border: dotted 3px cornflowerblue;
+	height: 500px;
+	margin: 20px 20px;
+	background-color: lightsteelblue;
+}
+.smile-header{
+	width:100%;
+	margin: 20px 0px;
+	height: 70px;
+	border-bottom: dotted 3px cornflowerblue;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.smile-header .happiness-level{
+	width: 20%;
+	float: left;
+}
+.smile-header .title{
+	width: 60%;
+	float:left;
+}
+
+.smile-header .like-info{
+	width: 20%;
+	float: left;
+}
+.smile .smile-body{
+	width: 95%;
+	height: 350px;
+	margin: 0px 10px;
+	overflow-y: scroll;
+	overflow-x: none;
+}
+
+.smile .smile-footer{
+	width: 100%;
+	text-align: center;
+	height: 50px;
+	border-top: dotted 3px cornflowerblue;
+}
+.smile-footer .timestamp{
+	margin:10px;
+}
 /* FINISH ME (Task 2.2+): add the styling for the logo and the create button */
 
 
