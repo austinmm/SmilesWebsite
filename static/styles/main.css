@@ -41,7 +41,7 @@ header .my-button{
 }
 .smile-header{
 	width:100%;
-	margin: 20px 0px;
+	margin: 10px 0px;
 	height: 70px;
 	border-bottom: dotted 3px cornflowerblue;
 	text-align: center;
@@ -51,6 +51,11 @@ header .my-button{
 .smile-header .happiness-level{
 	width: 20%;
 	float: left;
+	vertical-align: middle;
+}
+.smile-header .happiness-level img{
+	width: 100px;
+	height: auto;
 }
 .smile-header .title{
 	width: 60%;
