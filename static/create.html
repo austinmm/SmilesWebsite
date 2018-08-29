@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Smile</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="images/favicon.png">
-	<link rel="stylesheet" type="text/css" href="styles/main.css">
-</head>
-<body>
-	<header>
-		<!-- FINISH ME: add the logo here -->
-                <!-- FINISH ME: add here a message -->
-	</header>
-        <section class="mainbody">
-  	   <form method="get" action="index.html">
-		<input type="text" placeholder="Title" class="title-input" name="title" />
-		<!-- FINISH ME: add the rest of the form fields -->
-	   </form>
-        </section>         
-</body>
+	<head>
+		<title>Smile</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" type="image/png" href="images/favicon.png">
+		<link rel="stylesheet" type="text/css" href="styles/main.css">
+	</head>
+	<body>
+		<header>
+	        <img src="images/smile.png" alt="Smile Image" id="smile-image"/>
+	        <div align="center">
+	            <h2 style="color: gold;">Please share a pleasant experience below...</h2>
+	        </div>
+		</header>
+	    <section class="mainbody create-smiles">
+	   		<form method="get" action="index.html">
+				<input type="text" placeholder="Title..." class="title-input" name="title" /><br/>
+				<textarea type="text" placeholder="Share a Smile..." rows="15" class="smile-input" name=smile-body"></textarea> 
+				<h2>How much happiness does this story bring you?</h2>
+				<div class="happiness-input">
+					<div class="happiness-input-option">
+						<h3>Happy</h3>
+						<input class="happiness-input-img" type="image" src="images/level1.png"/>
+					</div>
+					<div class="happiness-input-option">
+						<h3>Very Happy</h3>
+						<input class="happiness-input-img" type="image" src="images/level2.png"/>
+					</div>				
+					<div class="happiness-input-option">
+						<h3>Extremely Happy</h3>
+						<input class="happiness-input-img" type="image" src="images/level3.png"/>
+					</div>
+				</div>
+				<button onclick="window.location.href='index.html'" class="cancel create-btn" type="button">
+				Cancel</button>
+				<button type="submit" class="post create-btn">Submit</button>
+			</form>
+	    </section>         
+	</body>
 </html>
