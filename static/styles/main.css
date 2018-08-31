@@ -15,13 +15,16 @@ header{
 	height: 200px;
 	padding: 40px 0px 20px 0px;
 	border-bottom: solid 10px gold;
-	display: block;
+	display: inline-block;
 	z-index: 1;
 }
 
-header .create{
+
+header #create-btn{
 	margin-top: 15px;
-	width: 100%;
+	width: 70%;
+	background-color: gold;
+	border-color: white;
 }
 
 header .my-button{
@@ -97,59 +100,69 @@ header .my-button{
 	text-align: center;
 	vertical-align: middle;
 }
+
 /*Create.html*/
-.create-smiles{
+#create-smile {
 	background-color: lightsteelblue;
 	width: 100%;
-	padding: 10px 20px;
 	text-align: center;
 }
-form{
-	display: inline-block;
-	width:75%;
+
+#create-smile form{
+	display: block;
+	width: 100%;
 }
 
-textarea, input[type="text"]{
-	width:75%;
+.create-smile-input{
+	width: 75%;
 	margin: 10px 0px;
+	display: inline-block;
+}
+
+.create-smile-input textarea, input[type="text"]{
 	padding: 5px 5px;
 	font-size: 1.4em;
 	border: dotted 3px cornflowerblue;
+	width: 100%;
 }
-textarea{
-	height: 200%;
-}
-.happiness-input{
+
+#input-happiness-container{
 	display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
-    margin-bottom: 20px;
+    width: 100%;
 }
 
-.happiness-input-option{
+#input-happiness-container div{
 	width: 20%;
 	margin: 10px 10px;
 	border: dotted 3px cornflowerblue;
 }
-.happiness-input-option input{
+
+#input-happiness-container input{
 	width: 50%;
 }
-.create-btn{
+
+.default-btn{
 	padding: 5px 10px;
+	margin: 10px 10px;
 	font-size: 1.2em;
 	font-weight: bold;
 	background-color: white;
-
+	border-radius: 20px;
+	border-style: dotted;
 }
 
-.cancel{
+.create-smile-input .cancel{
 	border-color: firebrick;
 }
 
-.post{
+.create-smile-input .post{
 	border-color: mediumseagreen;
 }
+
+/*Used during window resizing*/
 @media only screen and (max-width: 800px) {
 	.smile{
 		width: 90%;
