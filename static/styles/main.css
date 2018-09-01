@@ -6,6 +6,22 @@ body {
     background-color: cornflowerblue;
 }
 
+.default-btn{
+	padding: 5px 10px;
+	margin: 10px 10px;
+	font-size: 1.2em;
+	color: black;
+	font-weight: bold;
+	background-color: white;
+	border-radius: 20px;
+	border-style: dotted;
+}
+
+.default-btn:hover{
+	opacity: .7;
+	border-style: solid;
+}
+
 header{
 	margin-top: -1.3em;
 	text-align: center;
@@ -19,45 +35,41 @@ header{
 	z-index: 1;
 }
 
+header div{
+	width: 100%;
+}
 
 header #create-btn{
-	margin-top: 15px;
-	width: 70%;
+	color: black;
+	width:60%;
 	background-color: gold;
 	border-color: white;
 }
 
-header .my-button{
-	color: black;
-	width:80%;
-	background-color: gold;
-	padding: 10px 0px;
-	font-weight: bold;
-	font-size: 1.2em;
-}
-
-.mainbody{
+body .top-space{
 	display: inline-block;
-	margin-top: 250px;
+	margin-top: 240px;
 }
 
-.smiles{
+body .mainbody{
 	width: 100%; 
+}
+
+body .smiles{
 	display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 20px;
 }
 
-.smile{
+.smiles .smile{
 	min-height: 500px;
 	max-height: 500px;
 	border: dotted 3px cornflowerblue;
 	background-color: lightsteelblue;
 	margin: 20px 10px;
 }
-.smile-header{
+.smile .smile-header{
 	width:100%;
 	padding: 10px 0px;
 	height: 70px;
@@ -142,16 +154,6 @@ header .my-button{
 
 #input-happiness-container input{
 	width: 50%;
-}
-
-.default-btn{
-	padding: 5px 10px;
-	margin: 10px 10px;
-	font-size: 1.2em;
-	font-weight: bold;
-	background-color: white;
-	border-radius: 20px;
-	border-style: dotted;
 }
 
 .create-smile-input .cancel{
