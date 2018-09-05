@@ -3,10 +3,8 @@ var Smile = (function() {
 
     // PRIVATE VARIABLES
         
-    // The backend we'll use for Part 2. For Part 3, you'll replace this 
-    // with your backend.
-    // var apiUrl = 'https://smile451.herokuapp.com';  //Ruby on Rails backend
-    var apiUrl = 'https://arslanay-warmup.herokuapp.com';    //Flask-Python backend
+    var apiUrl = 'https://smile451.herokuapp.com';  //Ruby on Rails backend
+    //var apiUrl = 'https://arslanay-warmup.herokuapp.com';    //Flask-Python backend
     //var apiUrl = 'http://localhost:5000'; //backend running on localhost
 
     // FINISH ME (Task 4): You can use the default smile space, but this means
@@ -70,15 +68,34 @@ var Smile = (function() {
     var insertSmile = function(smile, beginning) {
         // Start with the template, make a new DOM element using jQuery
         var newElem = $(smileTemplateHtml);
-        // Populate the data in the new element
         // Set the "id" attribute 
         newElem.attr('id', smile.id); 
         // Now fill in the data that we retrieved from the server
         newElem.find('.title').text(smile.title);
-        // FINISH ME (Task 2): fill-in the rest of the data
+        newElem.find('.story').text(smile.story);
+        newElem.find('.count').text(smile.like_count);
+        //Sets the smile created_at string to a Date object
+        var date = new Date(smile.created_at);
+        //Uses the date object method "toDateString" to reformat the date to a easier to read string
+        newElem.find('.timestamp').text(date.toDateString());
+        //Sets the happiness-level src-image to the correct path based on the smile.happiness_level
+        var happiness = newElem.find('.happiness-level img');
+        switch(smile.happiness_level){
+            case 1: happiness.attr("src", "images/level1-smile.png");
+                break;
+            case 2: happiness.attr("src", "images/level2-smile.png");
+                break;
+            case 3: happiness.attr("src", "images/level3-smile.png");
+                break;
+            default:
+                alert("Invalid Smile Happiness Level");
+                break;
+        }
         if (beginning) {
+            //First Smile Post
             smiles.prepend(newElem);
         } else {
+            //The rest of the Smile Posts
             smiles.append(newElem);
         }
     };
@@ -91,12 +108,21 @@ var Smile = (function() {
     var displaySmiles = function() {
         // Prepare the AJAX handlers for success and failure
         var onSuccess = function(data) {
-            /* FINISH ME (Task 2): display smiles with most recent smiles at the beginning */
+            for(var i = 0; i < data.smiles.length; i++){
+                var isBeginning = i == 0? true : false;
+                /*Call to "insertSmile" to populate the page with as many smile-post 
+                that are contained in array data.smiles*/
+                insertSmile(data.smiles[i], isBeginning);
+            }
         };
         var onFailure = function() { 
-            console.error('display smiles failed'); 
+            alert("Failed to Connect to Backend");
         };
-        /* FINISH ME (Task 2): make a GET request to get recent smiles */
+        var space = 'initial'; 
+        var count = '10';
+        var order_by = 'created_at';
+        var queryApi = '/api/smiles?space=' + space + '&count=' + count + '&order_by=' + order_by;
+        makeGetRequest(queryApi, onSuccess, onFailure);
     };
 
     /**
@@ -105,17 +131,20 @@ var Smile = (function() {
      */
     var attachLikeHandler = function(e) {
         // Attach this handler to the 'click' action for elements with class 'like'
-        smiles.on('click', '.like', function(e) {
+        smiles.on('click', '.like .count', function(e) {
             // FINISH ME (Task 3): get the id of the smile clicked on to use in the POST request
-            var smileId = '123'; 
+            var smileId = e.id; 
             // Prepare the AJAX handlers for success and failure
             var onSuccess = function(data) {
+                alert("Like Value Updated Successfully");
                 /* FINISH ME (Task 3): update the like count in the UI */
             };
             var onFailure = function() { 
-                console.error('like smile error'); 
+                alert('Failed to update Smile Like Count'); 
             };
-            /* FINISH ME (Task 3): make a POST request to like this smile */
+            var queryApi = '/api/smiles?id=' + smileId;
+            //var makePostRequest = function(url, data, onSuccess, onFailure) {
+            makePostRequest(queryApi, onSuccess, onFailure);
         });
     };
 
@@ -162,7 +191,6 @@ var Smile = (function() {
     var start = function() {
         smiles = $(".smiles");
         create = $(".create");
-
         // Grab the first smile, to use as a template
         smileTemplateHtml = $(".smiles .smile")[0].outerHTML;
         // Delete everything from .smiles
