@@ -113,6 +113,7 @@ var Smile = (function() {
                 /*Call to "insertSmile" to populate the page with as many smile-post 
                 that are contained in array data.smiles*/
                 insertSmile(data.smiles[i], isBeginning);
+                attachLikeHandler(data.smiles[i]);
             }
         };
         var onFailure = function() { 
@@ -131,20 +132,21 @@ var Smile = (function() {
      */
     var attachLikeHandler = function(e) {
         // Attach this handler to the 'click' action for elements with class 'like'
-        smiles.on('click', '.like .count', function(e) {
-            // FINISH ME (Task 3): get the id of the smile clicked on to use in the POST request
-            var smileId = e.id; 
+        var likeInfo = $('#' + e.id + " .like-info");
+        likeInfo.find('.like').click(function() {
+            //likeInfo.find('.count').text(e.like_count + 1);
             // Prepare the AJAX handlers for success and failure
             var onSuccess = function(data) {
-                alert("Like Value Updated Successfully");
-                /* FINISH ME (Task 3): update the like count in the UI */
+                likeInfo.find('.count').html(data.like_count);
+                alert("Smile Like Count Updated Successfully");        
             };
             var onFailure = function() { 
                 alert('Failed to update Smile Like Count'); 
             };
-            var queryApi = '/api/smiles?id=' + smileId;
+            var queryApi = '/api/smiles?id=' + e.id;
+            e.like_count++;
             //var makePostRequest = function(url, data, onSuccess, onFailure) {
-            makePostRequest(queryApi, onSuccess, onFailure);
+            makePostRequest(queryApi, e, onSuccess, onFailure);
         });
     };
 
@@ -195,9 +197,7 @@ var Smile = (function() {
         smileTemplateHtml = $(".smiles .smile")[0].outerHTML;
         // Delete everything from .smiles
         smiles.html('');
-
         displaySmiles();
-        attachLikeHandler();
         attachCreateHandler();
     };
     
