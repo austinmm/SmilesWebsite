@@ -181,6 +181,35 @@ var Smile = (function() {
 
     };
 
+    /*var smileGenerator = function(){
+        var titles = ["Rebel Without a Goal",
+                    "Vulture of History",
+                    "Armies of the Lost Ones",
+                    "Giants of Insanity",
+                    "Foes and Witches",
+                    "Pilots and Enemies",
+                    "Demise of the North",
+                    "Tree of Darkness",
+                    "Battle the Ashes",
+                    "Remember the Nation"];
+        var onSuccess = function(data) {
+            console.log("Created smile");
+        };
+        var onFailure = function() { 
+            console.log('Failed to Create Smile'); 
+        };
+        for(var i = 0; i < 50; i++){
+            var data = {
+            title: titles[Math.floor((Math.random())*10)%10],
+            space: "initial",
+            story: "This is a Super Happy and Interesting Story...",
+            happiness_level: (Math.floor((Math.random())*10)%3)+1,
+            like_count: (Math.floor((Math.random())*100)%30)
+            };
+            var queryApi = '/api/smiles';
+            makePostRequest(queryApi, data, onSuccess, onFailure);
+        }
+    };*/
     
     /**
      * Start the app by displaying the most recent smiles and attaching event handlers.
@@ -193,6 +222,7 @@ var Smile = (function() {
         smileTemplateHtml = $(".smiles .smile")[0].outerHTML;
         // Delete everything from .smiles
         smiles.html('');
+        smileGenerator();
         displaySmiles();
         attachCreateHandler();
     };
