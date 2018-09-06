@@ -137,14 +137,12 @@ var Smile = (function() {
             // Prepare the AJAX handlers for success and failure
             var onSuccess = function(data) {
                 likeInfo.find('.count').text(data.smile.like_count);
-                alert("Smile Like Count Updated Successfully");        
             };
             var onFailure = function() { 
                 alert('Failed to update Smile Like Count'); 
             };
-            var queryApi = '/api/smiles?id=' + e.id;
-            e.like_count++;
-            makePostRequest(queryApi, e, onSuccess, onFailure);
+            var queryApi = '/api/smiles/' + e.id +'/like';
+            makePostRequest(queryApi, '', onSuccess, onFailure);
         });
     };
 
