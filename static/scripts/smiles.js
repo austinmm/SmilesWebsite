@@ -134,10 +134,9 @@ var Smile = (function() {
         // Attach this handler to the 'click' action for elements with class 'like'
         var likeInfo = $('#' + e.id + " .like-info");
         likeInfo.find('.like').click(function() {
-            //likeInfo.find('.count').text(e.like_count + 1);
             // Prepare the AJAX handlers for success and failure
             var onSuccess = function(data) {
-                likeInfo.find('.count').html(data.like_count);
+                likeInfo.find('.count').text(data.smile.like_count);
                 alert("Smile Like Count Updated Successfully");        
             };
             var onFailure = function() { 
@@ -145,7 +144,6 @@ var Smile = (function() {
             };
             var queryApi = '/api/smiles?id=' + e.id;
             e.like_count++;
-            //var makePostRequest = function(url, data, onSuccess, onFailure) {
             makePostRequest(queryApi, e, onSuccess, onFailure);
         });
     };
