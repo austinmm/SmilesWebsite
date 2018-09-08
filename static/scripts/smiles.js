@@ -11,7 +11,7 @@ var Smile = (function() {
     //            that your new smiles will be merged with everybody else's
     //            which can get confusing. Change this to a name that 
     //            is unlikely to be used by others. 
-    var smileSpace = 'initial'; // The smile space to use. 
+    var smileSpace = 'amarino'; // The smile space to use. 
 
 
     var smiles; // smiles container, value set in the "start" method below
@@ -122,7 +122,7 @@ var Smile = (function() {
         var space = 'initial'; 
         var count = '10';
         var order_by = 'created_at';
-        var queryApi = '/api/smiles?space=' + space + '&count=' + count + '&order_by=' + order_by;
+        var queryApi = '/api/smiles?space=' + smileSpace + '&count=' + count + '&order_by=' + order_by;
         makeGetRequest(queryApi, onSuccess, onFailure);
     };
 
@@ -152,36 +152,107 @@ var Smile = (function() {
      * @return {None}
      */
     var attachCreateHandler = function(e) {
-        // First, hide the form, initially 
-        create.find('form').hide();
-
-        // FINISH ME (Task 4): add a handler to the 'Share a smile...' button to
-        //                     show the 'form' and hide to button
-
-        // FINISH ME (Task 4): add a handler for the 'Cancel' button to hide the form
-        // and show the 'Shared a smile...' button
-
-        // The handler for the Post button in the form
-        create.on('click', '.submit-input', function (e) {
-            e.preventDefault (); // Tell the browser to skip its default click action
-
-            var smile = {}; // Prepare the smile object to send to the server
-            smile.title = create.find('.title-input').val();
-            // FINISH ME (Task 4): collect the rest of the data for the smile
-            var onSuccess = function(data) {
-                // FINISH ME (Task 4): insert smile at the beginning of the smiles container
-            };
-            var onFailure = function() { 
-                console.error('create smile failed'); 
-            };
-            
-            // FINISH ME (Task 4): make a POST request to create the smile, then 
-            //            hide the form and show the 'Shared a smile...' button
+        var happiness = "";
+        createEventHandler(happiness);
+        create.on('click', '.submit-input', function (event) {
+            event.preventDefault(); // Tell the browser to skip its default click action
+            var smile = {}; // Prepare the smile object to send to the server     
+            if(createInputHandler(smile, happiness)){
+                var onSuccess = function(data) {
+                    location.reload();
+                    create.hide();
+                    smiles.show();
+                    $(".create-btn").show();
+                };
+                var onFailure = function() { 
+                    console.error('Error: Failed to send new smile to backend.'); 
+                };
+                var queryApi = '/api/smiles';
+                makePostRequest(queryApi, smile, onSuccess, onFailure);le, then 
+            }
         });
-
     };
 
-    /*var smileGenerator = function(){
+    var createEventHandler = function(happiness){
+        create.hide();
+        smiles.show();
+        $(".create-btn").show();
+        create.find('.happiness-input-container input').click(function(event){
+            event.preventDefault(); // Tell the browser to skip its default click action
+            happiness = this.name;
+            $(this).parent().parent().children().css("border", "dotted 3px cornflowerblue");
+            $(this).parent().css("border", "solid 4px mediumseagreen");
+        });
+        create.find('.cancel').click(function(event){
+            event.preventDefault(); // Tell the browser to skip its default click action
+            create.hide();
+            smiles.show();
+            $(".create-btn").show();
+        });
+        $('.create-btn').click(function(event){
+            event.preventDefault(); // Tell the browser to skip its default click action
+            create.show();
+            smiles.hide();
+            $(".create-btn").hide();
+        });
+    }
+
+    var createInputHandler = function(smile, happiness){
+        var isValid = true;
+        var errors = "";
+        smile.title = create.find('.title-input').val();
+        smile.story = create.find('.story-input').val();
+        smile.happiness_level = happiness;
+        smile.space = smileSpace;
+        smile.like_count = 0;
+        if(smile.title == ''){ 
+            errors += "Warning: Please Enter a Title.\n"; 
+        }
+        if(smile.title.length > 64){ 
+            errors += "Warning: Title can only consist of 64 or less characters.\n"; 
+        }
+        if(smile.story == ''){ 
+            errors += "Warning: Please Enter a Stroy.\n"; 
+        }
+        if(smile.story.length > 2048){ 
+            errors += "Warning: Story can only consist of 2048 or less characters.\n"; 
+        }
+        if(smile.happiness_level == ''){ 
+            errors += "Warning: Please Select a Happiness Level.\n"; 
+        }
+        if(errors != ""){
+            alert(errors);
+            isValid = false;
+        }
+        return isValid;
+    }
+
+    
+    /**
+     * Start the app by displaying the most recent smiles and attaching event handlers.
+     * @return {None}
+     */
+    var start = function() {
+        smiles = $(".smiles");
+        create = $(".create");
+        var submitBtn = $('.submit-input');
+        // Grab the first smile, to use as a template
+        smileTemplateHtml = $(".smiles .smile")[0].outerHTML;
+        // Delete everything from .smiles
+        smiles.html('');
+        //smileGenerator();
+        displaySmiles();
+        attachCreateHandler(submitBtn);
+    };
+    // PUBLIC METHODS
+    // any private methods returned in the hash are accessible via Smile.key_name, e.g. Smile.start()
+    return {
+        start: start
+    };
+    
+})();
+
+/*var smileGenerator = function(){
         var titles = ["Rebel Without a Goal",
                     "Vulture of History",
                     "Armies of the Lost Ones",
@@ -210,28 +281,3 @@ var Smile = (function() {
             makePostRequest(queryApi, data, onSuccess, onFailure);
         }
     };*/
-    
-    /**
-     * Start the app by displaying the most recent smiles and attaching event handlers.
-     * @return {None}
-     */
-    var start = function() {
-        smiles = $(".smiles");
-        create = $(".create");
-        // Grab the first smile, to use as a template
-        smileTemplateHtml = $(".smiles .smile")[0].outerHTML;
-        // Delete everything from .smiles
-        smiles.html('');
-        smileGenerator();
-        displaySmiles();
-        attachCreateHandler();
-    };
-    
-
-    // PUBLIC METHODS
-    // any private methods returned in the hash are accessible via Smile.key_name, e.g. Smile.start()
-    return {
-        start: start
-    };
-    
-})();

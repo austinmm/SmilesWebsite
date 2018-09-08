@@ -39,7 +39,7 @@ header div{
 	width: 100%;
 }
 
-header #create-btn{
+header .create-btn{
 	color: black;
 	width:60%;
 	background-color: gold;
@@ -114,31 +114,31 @@ body .smiles{
 }
 
 /*Create.html*/
-#create-smile {
+.create {
 	background-color: lightsteelblue;
 	width: 100%;
 	text-align: center;
 }
 
-#create-smile form{
+.create form{
 	display: block;
 	width: 100%;
 }
 
-.create-smile-input{
+.create-smile{
 	width: 75%;
 	margin: 10px 0px;
 	display: inline-block;
 }
 
-.create-smile-input textarea, input[type="text"]{
+.create-smile textarea, input[type="text"]{
 	padding: 5px 5px;
 	font-size: 1.4em;
 	border: dotted 3px cornflowerblue;
 	width: 100%;
 }
 
-#input-happiness-container{
+.happiness-input-container{
 	display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -146,21 +146,21 @@ body .smiles{
     width: 100%;
 }
 
-#input-happiness-container div{
+.happiness-input-container div{
 	width: 20%;
 	margin: 10px 10px;
 	border: dotted 3px cornflowerblue;
 }
 
-#input-happiness-container input{
+.happiness-input-container input{
 	width: 50%;
 }
 
-.create-smile-input .cancel{
+.create-smile .cancel{
 	border-color: firebrick;
 }
 
-.create-smile-input .post{
+.create-smile .submit-input{
 	border-color: mediumseagreen;
 }
 
