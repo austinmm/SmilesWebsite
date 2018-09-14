@@ -18,6 +18,7 @@ var Smile = (function() {
     var smileTemplateHtml; // a template for creating smiles. Read from index.html
                            // in the "start" method
     var create; // create form, value set in the "start" method below
+    var smileHappiness = '';
 
 
     // PRIVATE METHODS
@@ -146,18 +147,24 @@ var Smile = (function() {
         });
     };
 
-
+    var attachHappinessHandler = function() {
+        create.find('.happiness-input-container input').click(function(event){
+            event.preventDefault(); // Tell the browser to skip its default click action
+            $(this).parent().parent().children().css("border", "dotted 3px cornflowerblue");
+            $(this).parent().css("border", "solid 4px mediumseagreen");
+            smileHappiness = this.name;
+        });
+    };
     /**
      * Add event handlers for submitting the create form.
      * @return {None}
      */
     var attachCreateHandler = function(e) {
-        var happiness = "";
-        createEventHandler(happiness);
+        createEventHandler();
         create.on('click', '.submit-input', function (event) {
             event.preventDefault(); // Tell the browser to skip its default click action
             var smile = {}; // Prepare the smile object to send to the server     
-            if(createInputHandler(smile, happiness)){
+            if(createInputHandler(smile)){
                 var onSuccess = function(data) {
                     location.reload();
                     create.hide();
@@ -168,21 +175,15 @@ var Smile = (function() {
                     console.error('Error: Failed to send new smile to backend.'); 
                 };
                 var queryApi = '/api/smiles';
-                makePostRequest(queryApi, smile, onSuccess, onFailure);le, then 
+                makePostRequest(queryApi, smile, onSuccess, onFailure);
             }
         });
     };
 
-    var createEventHandler = function(happiness){
+    var createEventHandler = function(){
         create.hide();
         smiles.show();
         $(".create-btn").show();
-        create.find('.happiness-input-container input').click(function(event){
-            event.preventDefault(); // Tell the browser to skip its default click action
-            happiness = this.name;
-            $(this).parent().parent().children().css("border", "dotted 3px cornflowerblue");
-            $(this).parent().css("border", "solid 4px mediumseagreen");
-        });
         create.find('.cancel').click(function(event){
             event.preventDefault(); // Tell the browser to skip its default click action
             create.hide();
@@ -193,16 +194,17 @@ var Smile = (function() {
             event.preventDefault(); // Tell the browser to skip its default click action
             create.show();
             smiles.hide();
+            //create.find('form input, form textarea').val('');
             $(".create-btn").hide();
         });
     }
 
-    var createInputHandler = function(smile, happiness){
+    var createInputHandler = function(smile){
         var isValid = true;
         var errors = "";
         smile.title = create.find('.title-input').val();
         smile.story = create.find('.story-input').val();
-        smile.happiness_level = happiness;
+        smile.happiness_level = smileHappiness;
         smile.space = smileSpace;
         smile.like_count = 0;
         if(smile.title == ''){ 
@@ -242,6 +244,7 @@ var Smile = (function() {
         smiles.html('');
         //smileGenerator();
         displaySmiles();
+        attachHappinessHandler();
         attachCreateHandler(submitBtn);
     };
     // PUBLIC METHODS
