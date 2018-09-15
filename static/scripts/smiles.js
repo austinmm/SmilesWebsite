@@ -3,9 +3,9 @@ var Smile = (function() {
 
     // PRIVATE VARIABLES
         
-    var apiUrl = 'https://smile451.herokuapp.com';  //Ruby on Rails backend
+    //var apiUrl = 'https://smile451.herokuapp.com';  //Ruby on Rails backend
     //var apiUrl = 'https://arslanay-warmup.herokuapp.com';    //Flask-Python backend
-    //var apiUrl = 'http://localhost:5000'; //backend running on localhost
+    var apiUrl = 'http://127.0.0.1:5000'; //backend running on localhost
 
     // FINISH ME (Task 4): You can use the default smile space, but this means
     //            that your new smiles will be merged with everybody else's
@@ -39,7 +39,35 @@ var Smile = (function() {
            error: onFailure
        });
    };
-
+   var smileGenerator = function(){
+           var titles = ["Rebel Without a Goal",
+                       "Vulture of History",
+                       "Armies of the Lost Ones",
+                       "Giants of Insanity",
+                       "Foes and Witches",
+                       "Pilots and Enemies",
+                       "Demise of the North",
+                       "Tree of Darkness",
+                       "Battle the Ashes",
+                       "Remember the Nation"];
+           var onSuccess = function(data) {
+               console.log("Created smile");
+           };
+           var onFailure = function() { 
+               console.log('Failed to Create Smile'); 
+           };
+           for(var i = 0; i < 10; i++){
+               var data = {
+               title: titles[Math.floor((Math.random())*10)%10],
+               space: "initial",
+               story: "This is a Super Happy and Interesting Story...",
+               happiness_level: (Math.floor((Math.random())*10)%3)+1,
+               like_count: (Math.floor((Math.random())*100)%30)
+               };
+               var queryApi = '/api/smiles/create';
+               makePostRequest(queryApi, data, onSuccess, onFailure);
+           }
+       };
     /**
      * HTTP POST request
      * @param  {string}   url       URL path, e.g. "/api/smiles"
@@ -229,33 +257,7 @@ var Smile = (function() {
         return isValid;
     }
 
-    
-    /**
-     * Start the app by displaying the most recent smiles and attaching event handlers.
-     * @return {None}
-     */
-    var start = function() {
-        smiles = $(".smiles");
-        create = $(".create");
-        var submitBtn = $('.submit-input');
-        // Grab the first smile, to use as a template
-        smileTemplateHtml = $(".smiles .smile")[0].outerHTML;
-        // Delete everything from .smiles
-        smiles.html('');
-        //smileGenerator();
-        displaySmiles();
-        attachHappinessHandler();
-        attachCreateHandler(submitBtn);
-    };
-    // PUBLIC METHODS
-    // any private methods returned in the hash are accessible via Smile.key_name, e.g. Smile.start()
-    return {
-        start: start
-    };
-    
-})();
-
-/*var smileGenerator = function(){
+    var smileGenerator = function(){
         var titles = ["Rebel Without a Goal",
                     "Vulture of History",
                     "Armies of the Lost Ones",
@@ -272,7 +274,7 @@ var Smile = (function() {
         var onFailure = function() { 
             console.log('Failed to Create Smile'); 
         };
-        for(var i = 0; i < 50; i++){
+        for(var i = 0; i < 10; i++){
             var data = {
             title: titles[Math.floor((Math.random())*10)%10],
             space: "initial",
@@ -280,7 +282,31 @@ var Smile = (function() {
             happiness_level: (Math.floor((Math.random())*10)%3)+1,
             like_count: (Math.floor((Math.random())*100)%30)
             };
-            var queryApi = '/api/smiles';
+            var queryApi = '/api/smiles/create';
             makePostRequest(queryApi, data, onSuccess, onFailure);
         }
-    };*/
+    };
+    /**
+     * Start the app by displaying the most recent smiles and attaching event handlers.
+     * @return {None}
+     */
+    var start = function() {
+        smiles = $(".smiles");
+        create = $(".create");
+        var submitBtn = $('.submit-input');
+        // Grab the first smile, to use as a template
+        smileTemplateHtml = $(".smiles .smile")[0].outerHTML;
+        // Delete everything from .smiles
+        smiles.html('');
+        smileGenerator();
+        //displaySmiles();
+        //attachHappinessHandler();
+        //attachCreateHandler(submitBtn);
+    };
+    // PUBLIC METHODS
+    // any private methods returned in the hash are accessible via Smile.key_name, e.g. Smile.start()
+    return {
+        start: start
+    };
+    
+})();

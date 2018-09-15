@@ -9,9 +9,20 @@ CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqlalchemy-demo.db'
 
 db = sqlalchemy.SQLAlchemy(app)
+#create new smile 
+#u = User(username='john', email='john@example.com')
+#db.session.add(u)
+#db.session.commit()
 
 class Smile(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    space = db.Column(db.String, primary_key=False)
+    title = db.Column(db.String, primary_key=False)
+    story = db.Column(db.String, primary_key=False)
+    happiness_level = db.Column(db.Integer, primary_key=False)
+    like_count = db.Column(db.Integer, primary_key=False)
+    created_at = db.Column(db.Float, primary_key=False)
+    updated_at = db.Column(db.String, primary_key=False)
     # TODO 1: add all of the columns for the other table attributes
 
 base_url = '/api/'
@@ -24,14 +35,17 @@ base_url = '/api/'
 @app.route(base_url + 'smiles')
 def index():
     space = request.args.get('space', None) 
+    count = reques.args.get('count', None)
+    order_by = request.args.get('order_by', None)
 
     if space is None:
         return "Must provide space", 500
-
-    count = request.args.get('count', None)
-    order_by = request.args.get('order_by', None)
+    if count is None:
+        return "Must provide count", 500
+    if order_by is None:
+        order_by = 'created_at'
     
-    query = None # store the results of your query here 
+    query = Smile.query.all() # store the results of your query here 
     
     # TODO 2: set the column which you are ordering on (if it exists)
     
@@ -45,6 +59,21 @@ def index():
         )
 
     return jsonify({"status": 1, "smiles": result})
+
+@app.route(base_url + 'smiles/create')
+def create(data):
+    #data = request.args.post('data', None) 
+
+    
+    #query = Smile.query.all() # store the results of your query here 
+    
+    # TODO 2: set the column which you are ordering on (if it exists)
+    
+    # TODO 3: limit the number of posts based on the count (if it exists)
+    for smile in data:
+        print(smile.title)
+
+    return jsonify({"status": 1, "smiles": data})
 
 
 # show
