@@ -16,13 +16,13 @@ db = sqlalchemy.SQLAlchemy(app)
 
 class Smile(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    space = db.Column(db.String, primary_key=False)
-    title = db.Column(db.String, primary_key=False)
-    story = db.Column(db.String, primary_key=False)
-    happiness_level = db.Column(db.Integer, primary_key=False)
-    like_count = db.Column(db.Integer, primary_key=False)
-    created_at = db.Column(db.Float, primary_key=False)
-    updated_at = db.Column(db.String, primary_key=False)
+    space = db.Column(db.String, nullable=False)
+    title = db.Column(db.String(64), nullable=False)
+    story = db.Column(db.String(2048), nullable=False)
+    happiness_level = db.Column(db.Integer, nullable=False)
+    like_count = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.Float, nullable=False)
+    updated_at = db.Column(db.String, nullable=False)
     # TODO 1: add all of the columns for the other table attributes
 
 base_url = '/api/'
@@ -34,6 +34,7 @@ base_url = '/api/'
 # return JSON
 @app.route(base_url + 'smiles')
 def index():
+    return "Hello World"
     space = request.args.get('space', None) 
     count = reques.args.get('count', None)
     order_by = request.args.get('order_by', None)
@@ -60,20 +61,41 @@ def index():
 
     return jsonify({"status": 1, "smiles": result})
 
-@app.route(base_url + 'smiles/create')
-def create(data):
-    #data = request.args.post('data', None) 
+@app.route(base_url + 'smile', methods=['POST'])
+def create():
+    smile = Smile(**request.json)
+        
+    if smile is None:
+        return "Data cannot be empty", 500
 
-    
-    #query = Smile.query.all() # store the results of your query here 
-    
-    # TODO 2: set the column which you are ordering on (if it exists)
-    
-    # TODO 3: limit the number of posts based on the count (if it exists)
-    for smile in data:
-        print(smile.title)
+    if data["title"] is None:
+        errors += "Smile object does not contain a \"title\"\n"
 
-    return jsonify({"status": 1, "smiles": data})
+    if data["story"] is None:
+        errors += "Smile object does not contain a \"story\"\n"
+
+    if data["happiness_level"] is None:
+        errors += "Smile object does not contain a \"happiness_level\"\n"
+
+    if data["space"] is None:
+        errors += "Smile object does not contain a \"space\"\n"
+
+    if data["like_count"] is None:
+        errors += "Smile object does not contain a \"like_count\"\n"
+
+    if errors != None:
+        return errors, 500
+
+    now = datetime.datetime.now()
+    smile["created_at"] = now.isoformat();
+    smile["updated_at"] = now.isoformat();
+
+    db.session.add(smile)
+    #Pushes new smile to database
+    db.session.commit()
+    db.session.refresh(smile)
+
+    return jsonify({"status": 1, "smile": row_to_obj(smile)}), 200
 
 
 # show

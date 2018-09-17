@@ -39,35 +39,6 @@ var Smile = (function() {
            error: onFailure
        });
    };
-   var smileGenerator = function(){
-           var titles = ["Rebel Without a Goal",
-                       "Vulture of History",
-                       "Armies of the Lost Ones",
-                       "Giants of Insanity",
-                       "Foes and Witches",
-                       "Pilots and Enemies",
-                       "Demise of the North",
-                       "Tree of Darkness",
-                       "Battle the Ashes",
-                       "Remember the Nation"];
-           var onSuccess = function(data) {
-               console.log("Created smile");
-           };
-           var onFailure = function() { 
-               console.log('Failed to Create Smile'); 
-           };
-           for(var i = 0; i < 10; i++){
-               var data = {
-               title: titles[Math.floor((Math.random())*10)%10],
-               space: "initial",
-               story: "This is a Super Happy and Interesting Story...",
-               happiness_level: (Math.floor((Math.random())*10)%3)+1,
-               like_count: (Math.floor((Math.random())*100)%30)
-               };
-               var queryApi = '/api/smiles/create';
-               makePostRequest(queryApi, data, onSuccess, onFailure);
-           }
-       };
     /**
      * HTTP POST request
      * @param  {string}   url       URL path, e.g. "/api/smiles"
@@ -170,7 +141,7 @@ var Smile = (function() {
             var onFailure = function() { 
                 alert('Failed to update Smile Like Count'); 
             };
-            var queryApi = '/api/smiles/' + e.id +'/like';
+            var queryApi = '/api/smiles' + e.id +'/like';
             makePostRequest(queryApi, '', onSuccess, onFailure);
         });
     };
@@ -282,7 +253,7 @@ var Smile = (function() {
             happiness_level: (Math.floor((Math.random())*10)%3)+1,
             like_count: (Math.floor((Math.random())*100)%30)
             };
-            var queryApi = '/api/smiles/create';
+            var queryApi = '/api/';
             makePostRequest(queryApi, data, onSuccess, onFailure);
         }
     };
@@ -299,9 +270,9 @@ var Smile = (function() {
         // Delete everything from .smiles
         smiles.html('');
         smileGenerator();
-        //displaySmiles();
-        //attachHappinessHandler();
-        //attachCreateHandler(submitBtn);
+        displaySmiles();
+        attachHappinessHandler();
+        attachCreateHandler(submitBtn);
     };
     // PUBLIC METHODS
     // any private methods returned in the hash are accessible via Smile.key_name, e.g. Smile.start()
