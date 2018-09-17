@@ -1,8 +1,8 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import flask_sqlalchemy as sqlalchemy
-
-import datetime
+from datetime import datetime
+import sys
 
 app = Flask(__name__)
 CORS(app)
@@ -16,43 +16,51 @@ db = sqlalchemy.SQLAlchemy(app)
 
 class Smile(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    space = db.Column(db.String, nullable=False)
+    space = db.Column(db.String(10), nullable=False, default="amarino")
     title = db.Column(db.String(64), nullable=False)
     story = db.Column(db.String(2048), nullable=False)
     happiness_level = db.Column(db.Integer, nullable=False)
-    like_count = db.Column(db.Integer, nullable=False)
-    created_at = db.Column(db.Float, nullable=False)
-    updated_at = db.Column(db.String, nullable=False)
+    like_count = db.Column(db.Integer, nullable=False, default=0)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    def __init__(self, title, story, happiness_level):
+        self.title = title
+        self.story = story
+        self.happiness_level = happiness_level
+
     # TODO 1: add all of the columns for the other table attributes
 
-base_url = '/api/'
+base_url = '/api'
 
 # index
 # loads all smiles given a space, count parameter and order_by parameter 
 # if the count param is specified and doesn't equal all limit by the count
 # if the order_by param is specified order by param otherwise load by updated_at desc
 # return JSON
-@app.route(base_url + 'smiles')
+@app.route(base_url + '/smiles', methods=["GET"])
 def index():
-    return "Hello World"
     space = request.args.get('space', None) 
-    count = reques.args.get('count', None)
+    count = request.args.get('count', None)
     order_by = request.args.get('order_by', None)
-
+    errors = ""
     if space is None:
-        return "Must provide space", 500
-    if count is None:
-        return "Must provide count", 500
-    if order_by is None:
-        order_by = 'created_at'
-    
-    query = Smile.query.all() # store the results of your query here 
-    
-    # TODO 2: set the column which you are ordering on (if it exists)
-    
-    # TODO 3: limit the number of posts based on the count (if it exists)
+        errors += "Must provide space"
 
+    elif space != "amarino":
+        errors += "Invalid space provided"
+
+    if count is None:
+        count = 10
+
+    if order_by is None:
+        order_by = "created_at"
+
+    if errors != "":
+        return errors, 500
     
+    query = Smile.query.all() # store the results of your query here    
+    # TODO 2: set the column which you are ordering on (if it exists)    
+    # TODO 3: limit the number of posts based on the count (if it exists)  
     result = []
     for row in query:
         result.append(
@@ -61,35 +69,30 @@ def index():
 
     return jsonify({"status": 1, "smiles": result})
 
-@app.route(base_url + 'smile', methods=['POST'])
-def create():
-    smile = Smile(**request.json)
-        
-    if smile is None:
-        return "Data cannot be empty", 500
 
-    if data["title"] is None:
+@app.route(base_url + '/smiles', methods=["POST"])
+def create():
+    print(request.get_json(), file=sys.stderr)
+    smile = Smile(**request.get_json())
+    #data = request.get_json()
+    #smile = Smile(data["title"], data["story"], data["happiness_level"])
+    errors = ""
+    if smile is None:
+        return "JSON object cannot be empty", 500
+
+    if smile.title is None:
         errors += "Smile object does not contain a \"title\"\n"
 
-    if data["story"] is None:
+    if smile.story is None:
         errors += "Smile object does not contain a \"story\"\n"
 
-    if data["happiness_level"] is None:
+    if smile.happiness_level is None:
         errors += "Smile object does not contain a \"happiness_level\"\n"
 
-    if data["space"] is None:
-        errors += "Smile object does not contain a \"space\"\n"
-
-    if data["like_count"] is None:
-        errors += "Smile object does not contain a \"like_count\"\n"
-
-    if errors != None:
+    if errors != "" :
         return errors, 500
 
-    now = datetime.datetime.now()
-    smile["created_at"] = now.isoformat();
-    smile["updated_at"] = now.isoformat();
-
+    print("Past Conditionals", file=sys.stderr)
     db.session.add(smile)
     #Pushes new smile to database
     db.session.commit()

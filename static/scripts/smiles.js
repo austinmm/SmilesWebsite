@@ -5,7 +5,7 @@ var Smile = (function() {
         
     //var apiUrl = 'https://smile451.herokuapp.com';  //Ruby on Rails backend
     //var apiUrl = 'https://arslanay-warmup.herokuapp.com';    //Flask-Python backend
-    var apiUrl = 'http://127.0.0.1:5000'; //backend running on localhost
+    var apiUrl = 'http://127.0.0.1:5000/api/'; //backend running on localhost
 
     // FINISH ME (Task 4): You can use the default smile space, but this means
     //            that your new smiles will be merged with everybody else's
@@ -88,7 +88,7 @@ var Smile = (function() {
             case 3: happiness.attr("src", "images/level3-smile.png");
                 break;
             default:
-                alert("Invalid Smile Happiness Level");
+                alert("Invalid Happiness Level");
                 break;
         }
         if (beginning) {
@@ -122,7 +122,7 @@ var Smile = (function() {
         var space = 'initial'; 
         var count = '10';
         var order_by = 'created_at';
-        var queryApi = '/api/smiles?space=' + smileSpace + '&count=' + count + '&order_by=' + order_by;
+        var queryApi = 'smiles?space=' + smileSpace + '&count=' + count + '&order_by=' + order_by;
         makeGetRequest(queryApi, onSuccess, onFailure);
     };
 
@@ -141,7 +141,7 @@ var Smile = (function() {
             var onFailure = function() { 
                 alert('Failed to update Smile Like Count'); 
             };
-            var queryApi = '/api/smiles' + e.id +'/like';
+            var queryApi = 'smiles/' + e.id +'/like';
             makePostRequest(queryApi, '', onSuccess, onFailure);
         });
     };
@@ -173,8 +173,7 @@ var Smile = (function() {
                 var onFailure = function() { 
                     console.error('Error: Failed to send new smile to backend.'); 
                 };
-                var queryApi = '/api/smiles';
-                makePostRequest(queryApi, smile, onSuccess, onFailure);
+                makePostRequest('smiles', smile, onSuccess, onFailure);
             }
         });
     };
@@ -204,8 +203,6 @@ var Smile = (function() {
         smile.title = create.find('.title-input').val();
         smile.story = create.find('.story-input').val();
         smile.happiness_level = smileHappiness;
-        smile.space = smileSpace;
-        smile.like_count = 0;
         if(smile.title == ''){ 
             errors += "Warning: Please Enter a Title.\n"; 
         }
@@ -213,7 +210,7 @@ var Smile = (function() {
             errors += "Warning: Title can only consist of 64 or less characters.\n"; 
         }
         if(smile.story == ''){ 
-            errors += "Warning: Please Enter a Stroy.\n"; 
+            errors += "Warning: Please Enter a Story.\n"; 
         }
         if(smile.story.length > 2048){ 
             errors += "Warning: Story can only consist of 2048 or less characters.\n"; 
@@ -228,7 +225,7 @@ var Smile = (function() {
         return isValid;
     }
 
-    var smileGenerator = function(){
+    /*var smileGenerator = function(count){
         var titles = ["Rebel Without a Goal",
                     "Vulture of History",
                     "Armies of the Lost Ones",
@@ -245,18 +242,15 @@ var Smile = (function() {
         var onFailure = function() { 
             console.log('Failed to Create Smile'); 
         };
-        for(var i = 0; i < 10; i++){
+        for(var i = 0; i < count; i++){
             var data = {
             title: titles[Math.floor((Math.random())*10)%10],
-            space: "initial",
             story: "This is a Super Happy and Interesting Story...",
             happiness_level: (Math.floor((Math.random())*10)%3)+1,
-            like_count: (Math.floor((Math.random())*100)%30)
             };
-            var queryApi = '/api/';
-            makePostRequest(queryApi, data, onSuccess, onFailure);
+            makePostRequest('smiles', data, onSuccess, onFailure);
         }
-    };
+    };*/
     /**
      * Start the app by displaying the most recent smiles and attaching event handlers.
      * @return {None}
@@ -269,7 +263,7 @@ var Smile = (function() {
         smileTemplateHtml = $(".smiles .smile")[0].outerHTML;
         // Delete everything from .smiles
         smiles.html('');
-        smileGenerator();
+        //smileGenerator(10);
         displaySmiles();
         attachHappinessHandler();
         attachCreateHandler(submitBtn);
