@@ -1,4 +1,4 @@
 flask
 flask-sqlalchemy
 flask-cors
-gunicorn==19.9.0
+gunicorn
