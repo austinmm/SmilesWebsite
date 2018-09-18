@@ -225,32 +225,43 @@ var Smile = (function() {
         return isValid;
     }
 
-    /*var smileGenerator = function(count){
+    var smileGenerator = function(){
         var titles = ["Rebel Without a Goal",
                     "Vulture of History",
                     "Armies of the Lost Ones",
                     "Giants of Insanity",
                     "Foes and Witches",
                     "Pilots and Enemies",
-                    "Demise of the North",
                     "Tree of Darkness",
                     "Battle the Ashes",
-                    "Remember the Nation"];
+                    "Remember the Nation",
+                    "Magnificent Bridges",
+                    "The Hidden Snake",
+                    "Destiny of Sons",
+                    "The Emerald's Healing",
+                    "The Wife of the Thoughts",
+                    "Angel in the Stone",
+                    "The Hard Star",
+                    "Beginning of Future",
+                    "The Night's Secret",
+                    "The Sliver of the Person",
+                    "Blade in the Twins"];
         var onSuccess = function(data) {
             console.log("Created smile");
         };
         var onFailure = function() { 
             console.log('Failed to Create Smile'); 
         };
-        for(var i = 0; i < count; i++){
+        for(var i = 0; i < 20; i++){
             var data = {
-            title: titles[Math.floor((Math.random())*10)%10],
-            story: "This is a Super Happy and Interesting Story...",
-            happiness_level: (Math.floor((Math.random())*10)%3)+1,
+                title: titles[i],
+                story: "This is a Super Happy and Interesting Story...",
+                happiness_level: (Math.floor((Math.random())*10)%3)+1,
+                space: "auto-generated"
             };
             makePostRequest('smiles', data, onSuccess, onFailure);
         }
-    };*/
+    };
     /**
      * Start the app by displaying the most recent smiles and attaching event handlers.
      * @return {None}
@@ -263,7 +274,7 @@ var Smile = (function() {
         smileTemplateHtml = $(".smiles .smile")[0].outerHTML;
         // Delete everything from .smiles
         smiles.html('');
-        //smileGenerator(10);
+        //smileGenerator();
         displaySmiles();
         attachHappinessHandler();
         attachCreateHandler(submitBtn);
