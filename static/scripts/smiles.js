@@ -163,16 +163,20 @@ var Smile = (function(){
         createEventHandler();
         create.on('click', '.submit-input', function (event) {
             event.preventDefault(); // Tell the browser to skip its default click action
-            var smile = {}; // Prepare the smile object to send to the server     
+            var smile = {}; // Prepare the smile object to send to the server 
+            $(".notification").html("<h2 style='color:PeachPuff>Thank you for creating a smile</h2>"
+                                    +"<h3>Please wait, do not refresh the page, while we create your post</h3>");
             if(createInputHandler(smile)){
                 var onSuccess = function(data) {
+                    $(".notification").html("");
                     location.reload();
                     create.hide();
                     smiles.show();
                     $(".create-btn").show();
                 };
                 var onFailure = function() { 
-                    console.error('Error: Failed to send new smile to backend.'); 
+                    $(".notification").html("<h2 style='color:PeachPuff>Sorry...</h2>"
+                                    +"<h3>We were unable to create your post do to an unknown error.</h3>");
                 };
                 makePostRequest('smiles', smile, onSuccess, onFailure);
             }

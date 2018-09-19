@@ -51,7 +51,16 @@ def index():
         order_by = ""
     if space is None:
         space = ""
+    query = filterBy(order_by, space, count)
+    result = []
+    for row in query:
+        result.append(
+            row_to_obj(row) # you must call this function to properly format 
+        )
+    return jsonify({"status": 1, "smiles": result})
 
+#helper function for index
+def filterBy(order_by, space, count):
     if order_by == "created_at":
         query = Smile.query.filter_by(space=space).order_by(Smile.created_at.desc()).limit(count)
 
@@ -74,16 +83,8 @@ def index():
         query = Smile.query.filter_by(space=space).order_by(Smile.like_count.desc()).limit(count)
     
     else:
-        query = Smile.query.filter_by(space=space).order_by(Smile.id).limit(count) # store the results of your query here
-    # TODO 2: set the column which you are ordering on (if it exists)    
-    # TODO 3: limit the number of posts based on the count (if it exists)  
-    result = []
-    for row in query:
-        result.append(
-            row_to_obj(row) # you must call this function to properly format 
-        )
-
-    return jsonify({"status": 1, "smiles": result})
+        query = Smile.query.filter_by(space=space).order_by(Smile.id).limit(count) # store the results of your query here 
+    return query
 
 
 
