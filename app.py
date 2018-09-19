@@ -8,10 +8,7 @@ app = Flask(__name__)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqlalchemy-demo.db'
 db = sqlalchemy.SQLAlchemy(app)
-#create new smile 
-#u = User(username='john', email='john@example.com')
-#db.session.add(u)
-#db.session.commit()
+base_url = '/api'
 
 class Smile(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -27,10 +24,7 @@ class Smile(db.Model):
         self.story = story
         self.happiness_level = happiness_level
         self.space = space"""
-
-    # TODO 1: add all of the columns for the other table attributes
-
-base_url = '/api'
+    
 
 # index
 # loads all smiles given a space, count parameter and order_by parameter 
@@ -105,7 +99,7 @@ def create():
     if (smile.story is None) or (len(smile.story) > 2048):
         errors += "Invalid Smile \"story\" provided\n"
 
-    if (smile.happiness_level is None) or (happiness_level > 3) or (happiness_level < 1):
+    if (smile.happiness_level is None) or (smile.happiness_level > 3) or (smile.happiness_level < 1):
         errors += "Invalid Smile \"happiness_level\" provided\n"
 
     if errors != "" :
