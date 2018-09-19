@@ -1,11 +1,12 @@
 
-var Smile = (function() {
+var Smile = (function(){
 
     // PRIVATE VARIABLES
         
     //var apiUrl = 'https://smile451.herokuapp.com';  //Ruby on Rails backend
     //var apiUrl = 'https://arslanay-warmup.herokuapp.com';    //Flask-Python backend
-    var apiUrl = 'http://127.0.0.1:5000/api/'; //backend running on localhost
+    //var apiUrl = 'http://127.0.0.1:5000/api/'; //backend running on localhost
+    var apiUrl = 'https://marino-warmup.herokuapp.com/api/'; //Heroku backend
 
     // FINISH ME (Task 4): You can use the default smile space, but this means
     //            that your new smiles will be merged with everybody else's
@@ -225,7 +226,31 @@ var Smile = (function() {
         return isValid;
     }
 
-    var smileGenerator = function(){
+    /**
+     * Start the app by displaying the most recent smiles and attaching event handlers.
+     * @return {None}
+     */
+    var start = function() {
+        smiles = $(".smiles");
+        create = $(".create");
+        var submitBtn = $('.submit-input');
+        // Grab the first smile, to use as a template
+        smileTemplateHtml = $(".smiles .smile")[0].outerHTML;
+        // Delete everything from .smiles
+        smiles.html('');
+        displaySmiles();
+        attachHappinessHandler();
+        attachCreateHandler(submitBtn);
+    };
+    // PUBLIC METHODS
+    // any private methods returned in the hash are accessible via Smile.key_name, e.g. Smile.start()
+    return {
+        start: start
+    };
+    
+})();
+
+    /*var smileGenerator = function(){
         var titles = ["Rebel Without a Goal",
                     "Vulture of History",
                     "Armies of the Lost Ones",
@@ -261,28 +286,4 @@ var Smile = (function() {
             };
             makePostRequest('smiles', data, onSuccess, onFailure);
         }
-    };
-    /**
-     * Start the app by displaying the most recent smiles and attaching event handlers.
-     * @return {None}
-     */
-    var start = function() {
-        smiles = $(".smiles");
-        create = $(".create");
-        var submitBtn = $('.submit-input');
-        // Grab the first smile, to use as a template
-        smileTemplateHtml = $(".smiles .smile")[0].outerHTML;
-        // Delete everything from .smiles
-        smiles.html('');
-        //smileGenerator();
-        displaySmiles();
-        attachHappinessHandler();
-        attachCreateHandler(submitBtn);
-    };
-    // PUBLIC METHODS
-    // any private methods returned in the hash are accessible via Smile.key_name, e.g. Smile.start()
-    return {
-        start: start
-    };
-    
-})();
+    };*/
