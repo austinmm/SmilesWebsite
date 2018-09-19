@@ -86,9 +86,8 @@ def filterBy(order_by, space, count):
 # creates a smile given the params
 @app.route(base_url + '/smiles', methods=["POST"])
 def create():
-    print("Create Smile", file=sys.stderr)
     smile = Smile(**request.get_json())
-    print(smile.title, file=sys.stderr)
+    smile.happiness_level = int(smile.happiness_level)
     errors = ""
     if smile is None:
         return "Invalid smile object provided", 500
