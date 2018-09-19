@@ -120,6 +120,11 @@ body .smiles{
 	text-align: center;
 }
 
+.create .notice{
+    color: PeachPuff;
+    padding-top: 15px;
+}
+
 .create form{
 	display: block;
 	width: 100%;

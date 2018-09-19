@@ -89,7 +89,7 @@ var Smile = (function(){
             case 3: happiness.attr("src", "images/level3-smile.png");
                 break;
             default:
-                alert("Invalid Happiness Level");
+                happiness.attr("alt", "Invalid Value");
                 break;
         }
         if (beginning) {
@@ -162,20 +162,22 @@ var Smile = (function(){
     var attachCreateHandler = function(e) {
         createEventHandler();
         create.on('click', '.submit-input', function (event) {
+            $(".notice").html("");
             event.preventDefault(); // Tell the browser to skip its default click action
             var smile = {}; // Prepare the smile object to send to the server 
-            $(".notification").html("<h2 style='color:PeachPuff>Thank you for creating a smile</h2>"
-                                    +"<h3>Please wait, do not refresh the page, while we create your post</h3>");
-            if(createInputHandler(smile)){
+            var isValid = createInputHandler(smile);
+            if(isValid === true){
+                $(".notice").html("<h2>Thank you!</h2>"
+                            +"<h3>Please wait, do not refresh the page, while we create your post</h3>");
                 var onSuccess = function(data) {
-                    $(".notification").html("");
+                    $(".notice").html("");
                     location.reload();
                     create.hide();
                     smiles.show();
                     $(".create-btn").show();
                 };
-                var onFailure = function() { 
-                    $(".notification").html("<h2 style='color:PeachPuff>Sorry...</h2>"
+                var onFailure = function(info) { 
+                    $(".notice").html("<h2>Well this is awkward...</h2>"
                                     +"<h3>We were unable to create your post do to an unknown error.</h3>");
                 };
                 makePostRequest('smiles', smile, onSuccess, onFailure);

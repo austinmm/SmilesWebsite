@@ -22,11 +22,11 @@ class Smile(db.Model):
     like_count = db.Column(db.Integer, nullable=False, default=0)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    def __init__(self, title, story, happiness_level, space="amarino"):
+    """def __init__(self, title, story, happiness_level, space="amarino"):
         self.title = title
         self.story = story
         self.happiness_level = happiness_level
-        self.space = space
+        self.space = space"""
 
     # TODO 1: add all of the columns for the other table attributes
 
