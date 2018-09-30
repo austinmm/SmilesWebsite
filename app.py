@@ -19,37 +19,32 @@ class Smile(db.Model):
     like_count = db.Column(db.Integer, nullable=False, default=0)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    """def __init__(self, title, story, happiness_level, space="amarino"):
-        self.title = title
-        self.story = story
-        self.happiness_level = happiness_level
-        self.space = space"""
-    
 
 # index
-# loads all smiles given a space, count parameter and order_by parameter 
+# loads all smiles given a space, count parameter and order_by parameter
 # if the count param is specified and doesn't equal all limit by the count
 # if the order_by param is specified order by param otherwise load by updated_at desc
 # return JSON
 @app.route(base_url + '/smiles', methods=["GET"])
 def index():
-    space = request.args.get('space', None) 
+    space = request.args.get('space', None)
     order_by = request.args.get('order_by', None)
     count = request.args.get('count', None)
-
     if count is None:
-        count = len(db.session.query(Smile).all())
+        return "Count must be provided", 500
     else:
         count = int(count)
+        if count > 10:
+            return "Count cannot be greater then 10", 500
     if order_by is None:
         order_by = ""
     if space is None:
-        space = ""
+        return "Space must be provided", 500
     query = filterBy(order_by, space, count)
     result = []
     for row in query:
         result.append(
-            row_to_obj(row) # you must call this function to properly format 
+            row_to_obj(row) # you must call this function to properly format
         )
     return jsonify({"status": 1, "smiles": result})
 
@@ -60,24 +55,24 @@ def filterBy(order_by, space, count):
 
     elif order_by == "updated_at":
         query = Smile.query.filter_by(space=space).order_by(Smile.updated_at.desc()).limit(count)
-    
+
     elif order_by == "title":
         query = Smile.query.filter_by(space=space).order_by(Smile.title).limit(count)
-    
+
     elif order_by == "story":
         query = Smile.query.filter_by(space=space).order_by(Smile.story).limit(count)
 
     elif order_by == "space":
         query = Smile.query.filter_by(space=space).order_by(Smile.space).limit(count)
-    
+
     elif order_by == "happiness_level":
         query = Smile.query.filter_by(space=space).order_by(Smile.happiness_level).limit(count)
-    
+
     elif order_by == "like_count":
         query = Smile.query.filter_by(space=space).order_by(Smile.like_count.desc()).limit(count)
-    
+
     else:
-        query = Smile.query.filter_by(space=space).order_by(Smile.id).limit(count) # store the results of your query here 
+        query = Smile.query.filter_by(space=space).order_by(Smile.id).limit(count)
     return query
 
 
@@ -130,7 +125,7 @@ def delete():
     space =  request.args['space']
     if (space is None) or (len(space) > 128):
         return "Invalid smile space provided", 500
-    
+
     smiles = Smile.query.filter_by(space=space).all()
     if smiles is None:
         return "Unable to find smiles within space " + space, 500
@@ -166,10 +161,10 @@ def row_to_obj(row):
         }
     return row
 
-  
+
 def main():
     #db.create_all() # creates the tables you've provided
-    app.run()       # runs the Flask application  
+    app.run()       # runs the Flask application
 
 if __name__ == '__main__':
     main()
