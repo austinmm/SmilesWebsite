@@ -1,0 +1,191 @@
+
+body {
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    background-color: cornflowerblue;
+}
+
+.default-btn{
+	padding: 5px 10px;
+	margin: 10px 10px;
+	font-size: 1.2em;
+	color: black;
+	font-weight: bold;
+	background-color: white;
+	border-radius: 20px;
+	border-style: dotted;
+}
+
+.default-btn:hover{
+	opacity: .7;
+	border-style: solid;
+}
+
+header{
+	margin-top: -1.3em;
+	text-align: center;
+	position: fixed;
+	background-color: lightsteelblue;
+	width: 100%;
+	height: 200px;
+	padding: 40px 0px 20px 0px;
+	border-bottom: solid 10px gold;
+	display: inline-block;
+	z-index: 1;
+}
+
+header div{
+	width: 100%;
+}
+
+header .create-btn{
+	color: black;
+	width:60%;
+	background-color: gold;
+	border-color: white;
+}
+
+body .top-space{
+	display: inline-block;
+	margin-top: 240px;
+}
+
+body .mainbody{
+	width: 100%; 
+}
+
+body .smiles{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.smiles .smile{
+	min-height: 500px;
+	max-height: 500px;
+	border: dotted 3px cornflowerblue;
+	background-color: lightsteelblue;
+	margin: 20px 10px;
+}
+.smile .smile-header{
+	width:100%;
+	padding: 10px 0px;
+	height: 70px;
+	border-bottom: dotted 3px cornflowerblue;
+	text-align: center;
+}
+
+.smile-header .happiness-level{
+	width: 25%;
+	float: left;
+}
+.smile-header .happiness-level img{
+	width: 90px;
+	height: auto;
+	align-content: center;
+}
+.smile-header .title{
+	width: 50%;
+	float:left;
+}
+
+.smile-header .like-info{
+	width: 25%;
+	float: left;
+}
+.smile .smile-body{
+	width: 95%;
+	height: 350px;
+	margin: 5px 10px;
+	overflow-y: scroll;
+	overflow-x: none;
+}
+
+.smile .smile-footer{
+	width: 100%;
+	height: 30px;
+	border-top: dotted 3px cornflowerblue;
+}
+.smile .smile-footer .timestamp{
+	text-align: center;
+	vertical-align: middle;
+}
+
+/*Create.html*/
+.create {
+	background-color: lightsteelblue;
+	width: 100%;
+	text-align: center;
+}
+
+.create .notice{
+    color: PeachPuff;
+    padding-top: 15px;
+}
+
+.create form{
+	display: block;
+	width: 100%;
+}
+
+.create-smile{
+	width: 75%;
+	margin: 10px 0px;
+	display: inline-block;
+}
+
+.create-smile textarea, input[type="text"]{
+	padding: 5px 5px;
+	font-size: 1.4em;
+	border: dotted 3px cornflowerblue;
+	width: 100%;
+}
+
+.happiness-input-container{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.happiness-input-container div{
+	width: 20%;
+	margin: 10px 10px;
+	border: dotted 3px cornflowerblue;
+}
+
+.happiness-input-container input{
+	width: 50%;
+}
+
+.create-smile .cancel{
+	border-color: firebrick;
+}
+
+.create-smile .submit-input{
+	border-color: mediumseagreen;
+}
+
+/*Used during window resizing*/
+@media only screen and (max-width: 800px) {
+	.smile{
+		width: 90%;
+	}
+	.mainbody, .smiles{
+		flex-direction: column;
+	}
+} 
+
+@media only screen and (min-width: 801px){
+	.smile{
+		width: 45%;
+	}
+} 
+@media only screen and (min-width: 1201px){
+	.smile{
+		width: 30%;
+	}
+} 

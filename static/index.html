@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+            <title>Smile Home</title> 
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="icon" type="image/png" href="images/favicon.png">
+            <link rel="stylesheet" type="text/css" href="styles/main.css">
+            <script type="text/javascript" src="scripts/jquery.min.js"></script>
+            <script type="text/javascript" src="scripts/smiles.js"></script>
+            <script type="text/javascript">
+                // This is a jQuery convention to say that once all the files
+                // load, the function Smile.start() should run.
+                // This function is defined in the smiles.js
+                    $(function() {
+                    Smile.start();
+                });
+            </script>
+    </head>
+    <body>
+        <header>
+                <img src="images/smile.png" alt="Header Image" class="header-image"/>
+                <div align="center">
+                    <button type="submit" class="create-btn default-btn">
+                        Share a Smile
+                    </button>
+                </div>
+        </header>
+        <span class="top-space"></span>
+        <div class="mainbody">
+            <section class="create">
+                <div align="center" class="notice"></div>
+                <form method="get" action="index.html">
+                    <div class="create-smile">
+                        <input type="text" name="smile-title" placeholder="Title..." class="title-input"/>
+                    </div><!--.create-smile-->
+                    <div class="create-smile">
+                        <textarea type="text" name="smile-body" placeholder="Share a Smile..." rows=20 class="story-input"></textarea>
+                    </div><!--.create-smile-->
+                    <h2>How much happiness did this story bring you?</h2>
+                    <div class="happiness-input-container" class="create-smile">
+                        <div>
+                            <h3>Happy</h3>
+                            <input type="image" class="happiness-input-1" name="1" src="images/level1.png"/>
+                        </div>
+                        <div>
+                            <h3>Very Happy</h3>
+                            <input type="image" class="happiness-input-2" name="2" src="images/level2.png"/>
+                        </div>              
+                        <div>
+                            <h3>Extremely Happy</h3>
+                            <input type="image" class="happiness-input-3" name="3" src="images/level3.png"/>
+                        </div>
+                    </div><!--.happiness-input-container-->
+                    <div class="create-smile">
+                        <button type="button" class="cancel default-btn" onclick="window.location.href='index.html'">
+                        Cancel</button>
+                        <button type="submit" class="submit-input default-btn">Submit</button>
+                    </div><!--.create-smile-->
+                </form>
+            </section><!--.create-->         
+            <section class="smiles">
+                <article class="smile">
+                    <div class="smile-header">
+                        <div align="center" class="happiness-level">
+                            <img src="" alt="Happiness Level"/>
+                        </div><!--.happiness-level-->
+                        <h3 class="title"><!-- Insert Title Here--></h3>
+                        <div align="center" class="like-info">
+                            <input type="image" class="like"
+                            src="images/heart.png" alt="heart"/>
+                            <div class="count"><!-- Insert Like-Count Here--></div>
+                        </div><!--.like-info-->
+                    </div><!--.smile-header-->
+                    <div class="smile-body story">
+                        <!-- Insert Story Here-->
+                    </div><!--.smile-body .story-->
+                    <div class="smile-footer">
+                        <h3 class="timestamp"><!--Insert Date Here--></h3>
+                    </div><!--.smile-footer-->
+                </article>
+            </section><!--.smiles-->         
+        </div>
+    </body>
+</html>
