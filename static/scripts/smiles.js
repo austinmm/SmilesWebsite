@@ -2,7 +2,7 @@
 var Smile = (function(){
 
     // PRIVATE VARIABLES
-        
+
     //var apiUrl = 'https://smile451.herokuapp.com';  //Ruby on Rails backend
     //var apiUrl = 'https://arslanay-warmup.herokuapp.com';    //Flask-Python backend
     //var apiUrl = 'http://127.0.0.1:5000/api/'; //backend running on localhost
@@ -10,9 +10,9 @@ var Smile = (function(){
 
     // FINISH ME (Task 4): You can use the default smile space, but this means
     //            that your new smiles will be merged with everybody else's
-    //            which can get confusing. Change this to a name that 
-    //            is unlikely to be used by others. 
-    var smileSpace = 'amarino'; // The smile space to use. 
+    //            which can get confusing. Change this to a name that
+    //            is unlikely to be used by others.
+    var smileSpace = 'amarino'; // The smile space to use.
 
 
     var smiles; // smiles container, value set in the "start" method below
@@ -23,9 +23,9 @@ var Smile = (function(){
 
 
     // PRIVATE METHODS
-      
+
    /**
-    * HTTP GET request 
+    * HTTP GET request
     * @param  {string}   url       URL path, e.g. "/api/smiles"
     * @param  {function} onSuccess   callback method to execute upon request success (200 status)
     * @param  {function} onFailure   callback method to execute upon request failure (non-200 status)
@@ -59,7 +59,7 @@ var Smile = (function(){
             error: onFailure
         });
     };
-        
+
     /**
      * Insert smile into smiles container in UI
      * @param  {Object}  smile       smile JSON
@@ -69,8 +69,8 @@ var Smile = (function(){
     var insertSmile = function(smile, beginning) {
         // Start with the template, make a new DOM element using jQuery
         var newElem = $(smileTemplateHtml);
-        // Set the "id" attribute 
-        newElem.attr('id', smile.id); 
+        // Set the "id" attribute
+        newElem.attr('id', smile.id);
         // Now fill in the data that we retrieved from the server
         newElem.find('.title').text(smile.title);
         newElem.find('.story').text(smile.story);
@@ -111,16 +111,16 @@ var Smile = (function(){
         var onSuccess = function(data) {
             for(var i = 0; i < data.smiles.length; i++){
                 var isBeginning = i == 0? true : false;
-                /*Call to "insertSmile" to populate the page with as many smile-post 
+                /*Call to "insertSmile" to populate the page with as many smile-post
                 that are contained in array data.smiles*/
                 insertSmile(data.smiles[i], isBeginning);
                 attachLikeHandler(data.smiles[i]);
             }
         };
-        var onFailure = function() { 
+        var onFailure = function() {
             alert("Failed to Connect to Backend");
         };
-        var space = 'initial'; 
+        var space = 'initial';
         var count = '10';
         var order_by = 'created_at';
         var queryApi = 'smiles?space=' + smileSpace + '&count=' + count + '&order_by=' + order_by;
@@ -139,8 +139,8 @@ var Smile = (function(){
             var onSuccess = function(data) {
                 likeInfo.find('.count').text(data.smile.like_count);
             };
-            var onFailure = function() { 
-                alert('Failed to update Smile Like Count'); 
+            var onFailure = function() {
+                alert('Failed to update Smile Like Count');
             };
             var queryApi = 'smiles/' + e.id +'/like';
             makePostRequest(queryApi, '', onSuccess, onFailure);
@@ -164,7 +164,7 @@ var Smile = (function(){
         create.on('click', '.submit-input', function (event) {
             $(".notice").html("");
             event.preventDefault(); // Tell the browser to skip its default click action
-            var smile = {}; // Prepare the smile object to send to the server 
+            var smile = {}; // Prepare the smile object to send to the server
             var isValid = createInputHandler(smile);
             if(isValid === true){
                 $(".notice").html("<h2>Thank you!</h2>"
@@ -176,7 +176,7 @@ var Smile = (function(){
                     smiles.show();
                     $(".create-btn").show();
                 };
-                var onFailure = function(info) { 
+                var onFailure = function(info) {
                     $(".notice").html("<h2>Well this is awkward...</h2>"
                                     +"<h3>We were unable to create your post do to an unknown error.</h3>");
                 };
@@ -210,20 +210,20 @@ var Smile = (function(){
         smile.title = create.find('.title-input').val();
         smile.story = create.find('.story-input').val();
         smile.happiness_level = smileHappiness;
-        if(smile.title == ''){ 
-            errors += "Warning: Please Enter a Title.\n"; 
+        if(smile.title == ''){
+            errors += "Warning: Please Enter a Title.\n";
         }
-        if(smile.title.length > 64){ 
-            errors += "Warning: Title can only consist of 64 or less characters.\n"; 
+        if(smile.title.length > 64){
+            errors += "Warning: Title can only consist of 64 or less characters.\n";
         }
-        if(smile.story == ''){ 
-            errors += "Warning: Please Enter a Story.\n"; 
+        if(smile.story == ''){
+            errors += "Warning: Please Enter a Story.\n";
         }
-        if(smile.story.length > 2048){ 
-            errors += "Warning: Story can only consist of 2048 or less characters.\n"; 
+        if(smile.story.length > 2048){
+            errors += "Warning: Story can only consist of 2048 or less characters.\n";
         }
-        if(smile.happiness_level == ''){ 
-            errors += "Warning: Please Select a Happiness Level.\n"; 
+        if(smile.happiness_level == ''){
+            errors += "Warning: Please Select a Happiness Level.\n";
         }
         if(errors != ""){
             alert(errors);
@@ -237,6 +237,7 @@ var Smile = (function(){
      * @return {None}
      */
     var start = function() {
+        alert("Please be Patient...\nThe Smile Post might take a few seconds to load from the Heroku Database.\nThanks!");
         smiles = $(".smiles");
         create = $(".create");
         var submitBtn = $('.submit-input');
@@ -253,43 +254,5 @@ var Smile = (function(){
     return {
         start: start
     };
-    
-})();
 
-    /*var smileGenerator = function(){
-        var titles = ["Rebel Without a Goal",
-                    "Vulture of History",
-                    "Armies of the Lost Ones",
-                    "Giants of Insanity",
-                    "Foes and Witches",
-                    "Pilots and Enemies",
-                    "Tree of Darkness",
-                    "Battle the Ashes",
-                    "Remember the Nation",
-                    "Magnificent Bridges",
-                    "The Hidden Snake",
-                    "Destiny of Sons",
-                    "The Emerald's Healing",
-                    "The Wife of the Thoughts",
-                    "Angel in the Stone",
-                    "The Hard Star",
-                    "Beginning of Future",
-                    "The Night's Secret",
-                    "The Sliver of the Person",
-                    "Blade in the Twins"];
-        var onSuccess = function(data) {
-            console.log("Created smile");
-        };
-        var onFailure = function() { 
-            console.log('Failed to Create Smile'); 
-        };
-        for(var i = 0; i < 20; i++){
-            var data = {
-                title: titles[i],
-                story: "This is a Super Happy and Interesting Story...",
-                happiness_level: (Math.floor((Math.random())*10)%3)+1,
-                space: "auto-generated"
-            };
-            makePostRequest('smiles', data, onSuccess, onFailure);
-        }
-    };*/
+})();
