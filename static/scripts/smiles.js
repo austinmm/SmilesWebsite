@@ -237,7 +237,6 @@ var Smile = (function(){
      * @return {None}
      */
     var start = function() {
-        alert("Please be Patient...\nThe Smile Post might take a few seconds to load from the Heroku Database.\nThanks!");
         smiles = $(".smiles");
         create = $(".create");
         var submitBtn = $('.submit-input');
@@ -248,6 +247,7 @@ var Smile = (function(){
         displaySmiles();
         attachHappinessHandler();
         attachCreateHandler(submitBtn);
+        alert("Hello There!\nThe Smile Post might take a few seconds to load from the Heroku Database so please be patient, Thanks!");
     };
     // PUBLIC METHODS
     // any private methods returned in the hash are accessible via Smile.key_name, e.g. Smile.start()
